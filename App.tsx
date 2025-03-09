@@ -1,20 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaView } from "react-native";
+import { ModalPortal } from 'react-native-modals';
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { BACKGROUND_COLOR, FLEX } from "./src/utils/constant.util";
+import Router from "./src/routes/Router";
+import  "./src/assets/styles/custom";
 
 export default function App() {
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <GestureHandlerRootView style={FLEX}>
+      <SafeAreaView style={[FLEX, BACKGROUND_COLOR]}>
+        <StatusBar style="light"  />
+        <Router />
+        <ModalPortal />
+      </SafeAreaView>
+    </GestureHandlerRootView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
