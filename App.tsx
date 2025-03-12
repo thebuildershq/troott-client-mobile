@@ -4,7 +4,8 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { ModalPortal } from 'react-native-modals';
 import Router from "./src/routes/Router";
 import { BACKGROUND_COLOR, FLEX } from "./src/utils/constant.util";
-
+import 'react-native-gesture-handler'; 
+import 'react-native-reanimated';
 
 export default function App() {
   return (
