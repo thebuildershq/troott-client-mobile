@@ -108,6 +108,32 @@ export interface IText {
 // }
 
 
+export interface IPasswordInput {
+  title: string;
+  label: string;
+  placeholder?: string;
+  backgroundColor: Palette;
+  name: string;
+  errors?: string;
+  control: Control<any, any>;
+  inpuRight?: IconName;
+  inputLeft?: IconName;
+  editable?: boolean;
+  multiline?: boolean;
+  numberOfLines?: number;
+  inputRightOnPress?: (event: NativeSyntheticEvent<NativeTouchEvent>) => void;
+  inputLeftOnPress?: (event: NativeSyntheticEvent<NativeTouchEvent>) => void;
+}
+
+
+export interface ICheckbox {
+  title: string;
+  name: string;
+  control: Control<any, any>;
+  checked: boolean;
+  onPress: () => void;
+}
+
 export interface IControl {
   onPress: () => void;
   name: IconName;
@@ -124,7 +150,7 @@ export interface ISlider {
 }
 
 
-export type ISearchBox = {
+export type ISearchInput = {
   title: string;
   label: string;
   placeholder: string;
@@ -139,7 +165,6 @@ export type ISearchBox = {
   inputLeft?: IconName;
   inputLeftOnPress?: (event: NativeSyntheticEvent<NativeTouchEvent>) => void;
 };
-
 
 export interface IStorage {
   keepData(key: string, data: object | string): Promise<void>;
