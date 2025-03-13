@@ -1,6 +1,6 @@
 import { DimensionValue } from "react-native";
 import { spacing } from "../../theme/spacing";
-import { Button } from "./ButtonPrimary";
+import { Button } from "./Button";
 
 
 function SecondaryButton({
@@ -22,10 +22,10 @@ function SecondaryButton({
       color="baseBlack"
       backgroundColor="white"
       style={{
-        paddingVertical: 20,
+        paddingVertical: 50,
         paddingHorizontal: 10,
         width: width,
-        marginTop: spacing["space-16"],
+        marginTop: spacing.space16,
       }}
       onPress={onPress}
       loading={loading}

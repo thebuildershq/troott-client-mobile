@@ -42,17 +42,14 @@ export interface IButton {
   disabled: boolean;
   loading: boolean;
   alignSelf?: ViewStyle["alignSelf"];
-  style?: ViewStyle;
-  textProps?: TextStyle;
-  backgroundColor?: Palette;
-  color?: Palette;
+  style?: Partial<ViewStyle>;
+  backgroundColor?: Palette | string;
+  color?: Palette | string;
   left?: ReactNode;
   right?: ReactNode;
-  borderRadius?: Spacing;
-  padding?: Spacing;
-  paddingHorizontal?: Spacing;
-  paddingVertical?: Spacing;
-
+  borderRadius?: Spacing | number;
+  paddingVertical?: Spacing | number;
+  variant?: "primary" | "outline" | "opacity" | string
   onPress: () => void;
 }
 
@@ -83,6 +80,11 @@ export interface IText {
   fontSize: Spacing;
   styles?: TextStyle;
   children: React.ReactNode;
+}
+
+
+export interface IWelcomeScreen{
+  navigation: any;
 }
 
 // export interface ITextInput {

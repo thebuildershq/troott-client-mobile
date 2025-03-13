@@ -5,6 +5,7 @@ export type TIcon = IIcon;
 
 export type TAuthStackList = {
     Welcome: undefined;
+    Review: undefined;
     Login: undefined;
     SignUp: undefined;
     ForgotPassword: undefined;

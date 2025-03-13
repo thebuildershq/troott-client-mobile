@@ -25,6 +25,7 @@ export const palette = {
     green1000: "#035549",
 
     white: "#FFFFFF",
+    baseWhite: "white",
     baseBlack: "#000000",
     elevatedBlack: "#1C1C1E",
 } as const;

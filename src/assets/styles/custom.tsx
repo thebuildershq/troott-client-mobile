@@ -4,6 +4,35 @@ import { fonts } from "../../designSystem/theme/font";
 import { palette } from "../../designSystem/theme/palette";
 
 const customStyles = StyleSheet.create({
+  //welcomeScreen
+  WelcomeScreenContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1,
+    // flexGrow: 1,
+  },
+
+  WelcomeScreenLogo: {
+    width: 110,
+    height: 50,
+    resizeMode: "contain",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  WelcomeScreenText: {
+    fontSize: 20,
+    fontFamily: fonts.family.matterLight,
+    color: palette.white,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  WelcomeScreenView: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
   //base
   container: {
     justifyContent: "center",
@@ -22,30 +51,105 @@ const customStyles = StyleSheet.create({
     color: palette.white,
   },
 
-  //TextInput
-  textInputContainer: {
-    paddingHorizontal: spacing.space20,
-    paddingVertical: spacing.space8,
-    borderRadius: spacing.space8,
-    width: "95%",
+  //margins
+  mt5: {
+    marginTop: 5,
   },
-  row: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+
+  mt10: {
+    marginTop: 10,
   },
-  input: {
-    width: "100%",
+
+  mt15: {
+    marginTop: 15,
   },
-  errorText: {
-    color: "red",
-    fontSize: 12,
-    marginTop: 4,
+
+  mt20: {
+    marginTop: 20,
   },
-  inputRoot: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+
+  mt25: {
+    marginTop: 25,
   },
+
+  mt30: {
+    marginTop: 30,
+  },
+
+  mt40: {
+    marginTop: 40,
+  },
+
+  mt50: {
+    marginTop: 50,
+  },
+
+  mt60: {
+    marginTop: 60,
+  },
+
+  mt80: {
+    marginTop: 100,
+  },
+
+  mt100: {
+    marginTop: 100,
+  },
+
+  mt120: {
+    marginTop: 120,
+  },
+
+  
+  //gaps
+  g5: {
+    gap: 5,
+  },
+
+  g10: {
+    gap: 10,
+  },
+
+  g15: {
+    gap: 15,
+  },
+
+  g20: {
+    gap: 20,
+  },
+
+  g25: {
+    gap: 25,
+  },
+
+  g30: {
+    gap: 30,
+  },
+
+  g40: {
+    gap: 40,
+  },
+
+  g50: {
+    gap: 50,
+  },
+
+  g60: {
+    gap: 60,
+  },
+
+  g80: {
+    gap: 100,
+  },
+
+  g100: {
+    gap: 100,
+  },
+
+  g120: {
+    gap: 120,
+  },
+
 });
 
 export default customStyles;
