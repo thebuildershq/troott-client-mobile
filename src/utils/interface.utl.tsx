@@ -53,29 +53,56 @@ export interface IButton {
   onPress: () => void;
 }
 
+
 export interface ITextInput {
-  control?: Control<any>
-  name: any;
-  error?: string;
-  backgroundColor?: Palette;
-  label: string;
+  id: string;
+  name: string
+  value: string;
+  label?: string;
+  labelStyle?: Partial<ViewStyle>;
   placeholder?: string;
-  left?: IconName;
-  right?: IconName;
-  editable?: boolean;
-  multiline?: boolean;
-  numberOfLines?: number;
+  placeholderColor?: string;
+  onChangeText: (val: string) => void;
+  keyboardType?: "default" | "email-address" | "numeric" | "phone-pad" | "url";
+  variant?: "outline" | "filled" | "transparent";
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
+  backgroundColor?: Palette | string;
+  borderRadius?: number;
+  paddingVertical?: number;
   secureTextEntry?: boolean;
-  containerStyle?: any;
-  textStyle?: TextStyle
-  borderRadius?: Spacing | number;
-  paddingVertical?: Spacing | number;
-  rightOnPress?: () => void;
-  leftOnPress?: () => void;
-  onPress?: () => void;
-  onFocus?: () => void;
-  onBlur?: (callback: () => void) => void
-} 
+  disabled?: boolean;
+  style?: Partial<ViewStyle>;
+  autoCapitalize?: "none" | "sentences" | "words" | "characters";
+  maxLength?: number;
+  clearButton?: boolean;
+}
+
+export interface IPasswordInput {
+  id: string;
+  name: string
+  value: string;
+  label?: string;
+  labelStyle?: Partial<ViewStyle>;
+  placeholder?: string;
+  placeholderColor?: string;
+  onChangeText: (val: string) => void;
+  keyboardType?: "default" | "email-address" | "numeric" | "phone-pad" | "url";
+  variant?: "outline" | "filled" | "transparent";
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
+  backgroundColor?: Palette | string;
+  borderRadius?: number;
+  paddingVertical?: number;
+  secureTextEntry?: boolean;
+  disabled?: boolean;
+  style?: Partial<ViewStyle>;
+  autoCapitalize?: "none" | "sentences" | "words" | "characters";
+  maxLength?: number;
+  clearButton?: boolean;
+}
+
+
 
 export interface IText {
   color: Palette;
@@ -113,7 +140,7 @@ export interface IWelcomeScreen{
 // }
 
 
-export interface IPasswordInput {
+export interface IPPasswordInput {
   title: string;
   label: string;
   placeholder?: string;

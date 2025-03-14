@@ -115,7 +115,7 @@ const componentStyles = StyleSheet.create({
     zIndex: 1
   },
 
-  
+
   //OAuth
   oAuthbutton: {
     padding: spacing.space16,
@@ -153,6 +153,42 @@ const componentStyles = StyleSheet.create({
   googleIcon: {
     width: 20,
     height: 20,
+  },
+
+
+  // TextInput
+  wrapper: {
+    width: "100%",
+  },
+  label: {
+    fontSize: 14,
+    fontWeight: "500",
+    color: palette.grey800,
+    marginBottom: 5,
+  },
+  tcontainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    backgroundColor: "#fff",
+    height: 50,
+  },
+  outline: {
+    borderWidth: 1,
+    borderColor: "#ccc",
+  },
+  tinput: {
+    flex: 1,
+    fontSize: 16,
+    color: palette.white,
+    paddingVertical: 10,
+  },
+  disabledInput: {
+    color: palette.grey900,
+  },
+  ticon: {
+    marginHorizontal: 8,
   },
 });
 

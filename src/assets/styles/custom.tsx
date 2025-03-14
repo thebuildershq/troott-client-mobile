@@ -38,6 +38,7 @@ const customStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
+    backgroundColor: palette.baseBlack
   },
   logo: {
     width: 140,

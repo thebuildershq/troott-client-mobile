@@ -1,69 +1,66 @@
-import { Pressable, View, TextInput as RNTextInput, Text } from "react-native";
-import { Controller } from "react-hook-form";
-import Icon from "../Icons/Icons";
+import React from "react";
+import { View, TextInput, Text } from "react-native";
+import { palette} from "../../theme/palette";
 import { ITextInput } from "../../../utils/interface.utl";
 import componentStyles from "../../../assets/styles/components";
-import { IconName } from "../../../assets/icons/icons";
 
-export const TextInput = (textProps: ITextInput) => {
 
+const CustomTextInput = (textProps: ITextInput) => {
   const {
-    control,
+    id,
     name,
-    error,
-    onBlur: externalOnBlur,
-    onFocus,
-    onPress,
-    left,
-    right,
-    leftOnPress,
-    rightOnPress,
-    editable,
-    containerStyle,
-    textStyle,
+    value,
+    label,
+    labelStyle,
+    placeholder,
+    placeholderColor,
+    onChangeText,
+    keyboardType = "default",
+    variant = "outline",
+    leftIcon,
+    rightIcon,
     backgroundColor,
+    paddingVertical,
+    borderRadius,
+    secureTextEntry,
+    disabled = false,
+    style,
     ...props
-  } = textProps
-
+  } = textProps;
 
   return (
-    <View style={[componentStyles.textInputContainer, { backgroundColor }]}>
-      <Controller
-        control={control}
-        name={name}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <View style={[left || right ? componentStyles.inputRoot : {}]}>
-            {left && (
-              <Pressable onPress={leftOnPress}>
-                <Icon name={left as IconName} />
-              </Pressable>
-            )}
+    <View style={[componentStyles.wrapper, style]}>
+      {label && <Text style={[componentStyles.label, labelStyle]}>{label}</Text>}
 
-            <RNTextInput
-              value={value}
-              onChangeText={onChange}
-              onBlur={() => (externalOnBlur ? externalOnBlur(onBlur) : onBlur())}
-              onFocus={onFocus}
-              onPressIn={onPress}
-              autoCapitalize="none"
-              editable={editable}
-              style={[
-                containerStyle,
-                left || right ? { width: "80%" } : {},
-              ]}
-              {...props}
-            />
+      <View
+        style={[
+          componentStyles.tcontainer,
+          variant === "outline" && componentStyles.outline,
+          { backgroundColor: disabled ? palette.grey700 : backgroundColor },
+        ]}
+      >
+        {leftIcon && <View style={componentStyles.icon}>{leftIcon}</View>}
 
-            {right && (
-              <Pressable onPress={rightOnPress}>
-                <Icon name={right as IconName} />
-              </Pressable>
-            )}
-          </View>
-        )}
-      />
+        <TextInput
+          id={id}
+          style={[componentStyles.input, disabled && componentStyles.disabledInput]}
+          value={value}
+          secureTextEntry={secureTextEntry}
+          placeholder={placeholder}
+          placeholderTextColor={placeholderColor || palette.grey100}
+          onChangeText={!disabled ? onChangeText : undefined}
+          keyboardType={keyboardType}
+          editable={!disabled}
+          autoCapitalize={props.autoCapitalize}
+          accessibilityLabel={label || placeholder}
+          accessibilityHint="Text input field"
+          {...props}
+        />
 
-      {error && <Text style={textStyle}>{error}</Text>}
+        {rightIcon && <View style={componentStyles.ticon}>{rightIcon}</View>}
+      </View>
     </View>
   );
 };
+
+export default CustomTextInput;
