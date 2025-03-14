@@ -60,6 +60,14 @@ export const Button = ( Bprops: IButton) => {
           backgroundColor: palette.green200,
           opacity: 0.8,
         };
+      case "grey":
+        return {
+          backgroundColor: "transparent",
+          borderWidth: 1,
+          borderColor: palette[backgroundColor as keyof typeof palette],
+          borderRadius: 2
+          
+        }
       default:
         return { backgroundColor: palette.baseGreen};
     }
@@ -85,12 +93,12 @@ export const Button = ( Bprops: IButton) => {
       >
         {loading ? (
           <Animated.View style={{ transform: [{ rotate: spin }] }}>
-          <Feather name="loader" size={32} color={variant === "outline" ? palette.baseWhite : palette.baseBlack} />
+          <Feather name="loader" size={32} color={variant === "outline" ? palette.baseWhite ? "grey": palette.green400 : palette.baseBlack} />
           </Animated.View>
         ) : (
           <View style={left || right ? styles.row : {}}>
             {left}
-            <Text style={[styles.text, { color: variant === "outline" ? palette[backgroundColor as keyof typeof palette] : palette[color as keyof typeof palette] }]}>
+            <Text style={[styles.text, { color: variant === "outline" ? (palette[backgroundColor as keyof typeof palette] || "grey") : palette[color as keyof typeof palette] }]}>
               {title}
             </Text>
             {right}

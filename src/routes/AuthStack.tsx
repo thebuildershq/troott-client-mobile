@@ -16,7 +16,7 @@ const AuthStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerTitle: "Create Account",
+        headerTitle: "Title Here",
         headerStyle: { backgroundColor: palette.baseBlack },
         headerTitleAlign: "center",
         headerTintColor: palette.white,
@@ -26,6 +26,7 @@ const AuthStack = () => {
           backgroundColor: palette.baseBlack,
         },
         headerBackVisible: false,
+        
       }}
     >
       <Stack.Screen
@@ -36,7 +37,7 @@ const AuthStack = () => {
 
       <Stack.Screen
         name="Review"
-        options={{ headerShown: false }}
+        options={{ headerShown: true, headerTitle: "Review" }}
         component={Review}
       />
 
@@ -49,6 +50,7 @@ const AuthStack = () => {
       <Stack.Screen
         name="Login"
         options={{ headerShown: false }}
+        
         component={LoginScreen}
       />
 

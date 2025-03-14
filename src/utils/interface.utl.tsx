@@ -49,29 +49,32 @@ export interface IButton {
   right?: ReactNode;
   borderRadius?: Spacing | number;
   paddingVertical?: Spacing | number;
-  variant?: "primary" | "outline" | "opacity" | string
+  variant?: "primary" | "outline" | "opacity" | "grey" | string
   onPress: () => void;
 }
 
 export interface ITextInput {
-  backgroundColor: Palette;
-  label: string;
-  name: string;
+  control?: Control<any>
+  name: any;
   error?: string;
+  backgroundColor?: Palette;
+  label: string;
   placeholder?: string;
-  left?: React.ReactNode;
-  right?: React.ReactNode;
-  control: Control<any, any>;
+  left?: IconName;
+  right?: IconName;
   editable?: boolean;
   multiline?: boolean;
   numberOfLines?: number;
   secureTextEntry?: boolean;
   containerStyle?: any;
   textStyle?: TextStyle
- 
+  borderRadius?: Spacing | number;
+  paddingVertical?: Spacing | number;
+  rightOnPress?: () => void;
+  leftOnPress?: () => void;
   onPress?: () => void;
   onFocus?: () => void;
-  onBlur?: () => void;
+  onBlur?: (callback: () => void) => void
 } 
 
 export interface IText {
@@ -173,4 +176,9 @@ export interface IStorage {
   fetchData(key: string): Promise<string | null>;
   removeData(key: string): Promise<void>;
   clearAll(): Promise<void>;
+}
+
+export interface IOAuth {
+  onGooglePress: () => void;
+  onApplePress: () => void;
 }

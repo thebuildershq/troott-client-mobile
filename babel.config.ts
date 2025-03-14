@@ -10,7 +10,9 @@ module.exports = function (api: ConfigAPI): BabelConfig {
     return {
         presets: ["babel-preset-expo"],
         plugins: [
-            "react-native-reanimated/plugin", // Must be the last plugin
+            
+            "react-native-reanimated/plugin",
+            "react-native-iconify/plugin",
         ],
     };
 };

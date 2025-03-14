@@ -3,7 +3,7 @@ import { StyleSheet, TextStyle} from "react-native";
 import { ISearchBox } from "../../../utils/components.types";
 import { Text } from "./Text";
 import { spacing } from "../../theme/spacing";
-import { TextInput } from "./TextInput";
+import { TextInput } from "../Input/TextInput";
 import { fonts } from "../../theme/font";
 import { palette } from "../../theme/palette";
 

@@ -5,50 +5,73 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import componentStyles from "../assets/styles/components";
 import { useNavigation } from "@react-navigation/native";
 import { INavigation } from "../utils/type.util";
-import { Button } from "../designSystem/components/Buttons/Button";
 import { spacing } from "../designSystem/theme/spacing";
+import { TextInput } from "../designSystem/components/Input/TextInput";
+import { useForm } from "react-hook-form";
+import { palette } from "../designSystem/theme/palette";
+import OAuth from "../designSystem/layouts/OAuth";
+import AuthHeader from "../designSystem/layouts/AuthHeader";
 
 const Review = () => {
+  const { control } = useForm();
   const navigation = useNavigation<INavigation>();
 
   return (
     <SafeAreaView style={customStyles.container}>
       <Text style={customStyles.text}>Review components and screens here</Text>
-      <View style={{ marginTop: 20 }}>
-        <Button
-          title="Create Account"
-          paddingVertical={spacing.space8}
-          onPress={() => console.log("Clicked!")}
-          variant="utline"
-          disabled={true}
-          loading={false}
-        />
+      <View style={customStyles.mt20}>
 
-        <Button
-          title="Login"
 
-          onPress={() => console.log("Create account Clicked!")}
-          disabled={false}
-          variant="opacity"
-          loading={false}
-        />
+        <AuthHeader/>
+        {/* <OAuth/> */}
 
-        <Button
-          title="Login"
-          onPress={() => console.log("Login Clicked!")}
-          variant="outline"
+
+        
+        <View style={[componentStyles.input, { backgroundColor: palette.baseBlack }]}> 
+        <TextInput
           backgroundColor="white"
-          color="baseBlack"
-          disabled={false}
-          loading={false}
-          borderRadius={spacing.space2}
+          control={control}
+          label="Label"
+          name="name"
+          containerStyle={componentStyles.input}
+          placeholder="Enter your password"
+          borderRadius={spacing.space10}
         />
+        </View>
+        <TextInput
+          backgroundColor="white"
+          control={control}
+          label="Label"
+          name="name"
+          containerStyle={componentStyles.input}
+          placeholder="Enter your password"
+          borderRadius={spacing.space10}
+        />
+
+        {/* <View style={[componentStyles.input, { backgroundColor: palette.baseBlack }]}>
+          <UserIcon size={24} color="#000" />
+          <TextInput
+          
+          label=""
+          name={''}
+            placeholder="Username"
+            textStyle={componentStyles.input}
+            // style={[styles.input, { color: textColor }]}
+          />
+        </View> */}
 
         <TouchableOpacity
           style={componentStyles.button}
           onPress={() => navigation.navigate("Welcome")}
         >
           <Text style={componentStyles.buttonText}>Welcome Screen</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={componentStyles.button}
+          onPress={() => navigation.navigate("Login")}
+        >
+          <Text style={componentStyles.buttonText}>Login Screen</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

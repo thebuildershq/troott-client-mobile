@@ -1,16 +1,11 @@
 import { ReactNode } from "react";
-import { StyleSheet, View, ViewStyle } from "react-native";
-import { spacing } from "../theme/spacing";
+import { View, ViewStyle } from "react-native";
+import troottStyles from "../../assets/styles/troott";
 
-
-function AuthRoot({ children, props }: { children: ReactNode; props?: ViewStyle }) {
-  return <View style={[styles.container, props]}>{children}</View>;
+function AuthRoot(authRootProps: any) {
+  const { children, props = {} }: { children: ReactNode; props?: ViewStyle } =
+    authRootProps;
+  return <View style={[troottStyles.authContainer, props]}>{children}</View>;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    marginHorizontal: spacing.space16,
-  },
-});
 
 export default AuthRoot;

@@ -100,8 +100,10 @@ const customStyles = StyleSheet.create({
     marginTop: 120,
   },
 
-  
   //gaps
+  g0: {
+    gap: 0,
+  },
   g5: {
     gap: 5,
   },
@@ -149,7 +151,6 @@ const customStyles = StyleSheet.create({
   g120: {
     gap: 120,
   },
-
 });
 
 export default customStyles;

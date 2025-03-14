@@ -2,7 +2,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 import React, { useEffect, useCallback } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import AppStack from "./AppStack";
+import AuthStack from "./AuthStack";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -46,8 +46,8 @@ const Router = () => {
   return (
     <>
       <NavigationContainer>
-        {/* <AuthStack /> */}
-        <AppStack />
+        <AuthStack />
+        {/* <AppStack /> */}
       </NavigationContainer>
     </>
   );

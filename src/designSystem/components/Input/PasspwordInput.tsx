@@ -1,16 +1,30 @@
-import React from 'react'
-import { View, Text } from 'react-native'
-import { IPasswordInput } from '../../../utils/interface.utl'
+// import React, { useState } from "react";
+// import { View } from "react-native";
+// import { TextInput } from "./TextInput";
+// import { Control } from "react-hook-form";
+// import { IconName } from "../assets/icons/icons";
 
-const PasspwordInput = (props: IPasswordInput) => {
+// interface PasswordInputProps {
+//   control: Control<any>;
+//   name: string;
+//   error?: string;
+// }
 
-    const { } = props
-    
-  return (
-    <View>
-      <Text>PasspwordInput</Text>
-    </View>
-  )
-}
+// export const PasswordInput = ({ control, name, error }: PasswordInputProps) => {
+//   const [secureTextEntry, setSecureTextEntry] = useState(true);
 
-export default PasspwordInput
+//   return (
+//     <View>
+//       <TextInput
+//         control={control}
+//         name={name}
+//         placeholder="Enter your password"
+//         secureTextEntry={secureTextEntry}
+//         error={error}
+//         left="lock" // Assuming you have a lock icon in your Icon component
+//         right={secureTextEntry ? "eye" : "eye-off"} // Toggle between eye and eye-off
+//         rightOnPress={() => setSecureTextEntry(!secureTextEntry)}
+//       />
+//     </View>
+//   );
+// };
