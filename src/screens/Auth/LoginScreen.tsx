@@ -6,7 +6,6 @@ import customStyles from "../../assets/styles/custom";
 import AuthRoot from "../../designSystem/layouts/AuthRoot";
 import OAuth from "../../designSystem/layouts/OAuth";
 import AuthHeader from "../../designSystem/layouts/AuthHeader";
-
 import Icon from "react-native-vector-icons/FontAwesome";
 import { palette } from "../../designSystem/theme/palette";
 import { INavigation } from "../../utils/type.util";
@@ -19,7 +18,7 @@ import componentStyles from "../../assets/styles/components";
 
 const LoginScreen = () => {
   const navigation = useNavigation<INavigation>();
-  const [text, setText] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("")
   const [loginUser, setLoginUser] = useState(false);
   
@@ -45,9 +44,9 @@ const LoginScreen = () => {
               id="email"
               label="Email Address"
               placeholder="Enter your email"
-              value={text}
+              value={email}
               secureTextEntry={false}
-              onChangeText={(val) => setText(val)}
+              onChangeText={(val) => setEmail(val)}
               keyboardType="default"
               variant="outline"
               disabled={false}
@@ -99,6 +98,7 @@ const LoginScreen = () => {
           ></Button>
           
           <OAuth />
+
         </View>
       </AuthRoot>
     </SafeAreaView>

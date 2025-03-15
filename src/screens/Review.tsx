@@ -39,6 +39,12 @@ const Review = () => {
           >
             <Text style={componentStyles.buttonText}>Login Screen</Text>
           </TouchableOpacity>
+          <TouchableOpacity
+            style={componentStyles.button}
+            onPress={() => navigation.navigate("Email")}
+          >
+            <Text style={componentStyles.buttonText}>Create account Screen</Text>
+          </TouchableOpacity>
         </View>
 
         {/* <AuthHeader /> */}

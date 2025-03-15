@@ -18,7 +18,7 @@ const WelcomeScreen = (props: IWelcomeScreen) => {
   const handleCreateAccount = () => {
     setIsCreatingAccount(true);
     setTimeout(() => {
-      navigation.navigate("EnterEmail");
+      navigation.navigate("Email");
       setIsCreatingAccount(false);
     }, 2000);
   };

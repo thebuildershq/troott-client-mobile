@@ -54,6 +54,7 @@ const CustomTextInput = (textProps: ITextInput) => {
           autoCapitalize={props.autoCapitalize}
           accessibilityLabel={label || placeholder}
           accessibilityHint="Text input field"
+          width={props.width}
           {...props}
         />
 

@@ -71,6 +71,7 @@ export interface ITextInput {
   paddingVertical?: number;
   secureTextEntry?: boolean;
   disabled?: boolean;
+  width?: number | string
   style?: Partial<ViewStyle>;
   autoCapitalize?: "none" | "sentences" | "words" | "characters";
   maxLength?: number;

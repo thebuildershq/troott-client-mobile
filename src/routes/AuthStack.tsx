@@ -55,7 +55,7 @@ const AuthStack = () => {
       />
 
       <Stack.Screen
-        name="EnterEmail"
+        name="Email"
         options={{ headerShown: false }}
         component={EnterEmail}
       />

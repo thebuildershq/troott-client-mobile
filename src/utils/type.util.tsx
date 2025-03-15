@@ -7,11 +7,12 @@ export type TAuthStackList = {
     Welcome: undefined;
     Review: undefined;
     Login: undefined;
-    SignUp: undefined;
+    Email: undefined;
+    Register: undefined;
     ForgotPassword: undefined;
     ResetPassword: undefined;
     Verification: undefined;
-    Email: undefined;
+    
     Password: undefined;
     ChooseMinisters: undefined;
     GreatPicks: Array<any>;

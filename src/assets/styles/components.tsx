@@ -93,6 +93,17 @@ const componentStyles = StyleSheet.create({
     textDecorationLine: "underline"
   },
 
+  // Terms and Conditions
+  termsSubText: {
+    fontSize: 14,
+    textAlign: "left",
+    color: palette.white,
+    marginTop: 10,
+    fontFamily: fonts.family.matterRegular,
+    lineHeight: 20
+    
+  },
+
   //Divider
 
   OrCongtainer: {
@@ -189,6 +200,19 @@ const componentStyles = StyleSheet.create({
     marginHorizontal: -50,
     width: 20,
     height: 20,
+  },
+
+
+  // Register style
+  rowContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 10
+  },
+  rowInput: {
+    flex: 1, 
+    marginHorizontal: 5, 
   },
 });
 
