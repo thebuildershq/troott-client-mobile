@@ -130,8 +130,16 @@ const componentStyles = StyleSheet.create({
     textAlign: "left",
     color: palette.grey400,
     fontFamily: fonts.family.matterRegular,
-    
   },
+
+  // Reset Password
+  reSubText: {
+    fontSize: 14,
+    textAlign: "center",
+    color: palette.grey200,
+    fontFamily: fonts.family.matterRegular,
+    lineHeight:18
+  },  
 
   //Divider
   OrCongtainer: {

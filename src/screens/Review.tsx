@@ -45,6 +45,27 @@ const Review = () => {
 
           <TouchableOpacity
             style={componentStyles.button}
+            onPress={() => navigation.navigate("ForgotPasswordCode")}
+          >
+            <Text style={componentStyles.buttonText}>Forgot code Screen</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={componentStyles.button}
+            onPress={() => navigation.navigate("ResetPassword")}
+          >
+            <Text style={componentStyles.buttonText}>Reset Password Screen</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={componentStyles.button}
+            onPress={() => navigation.navigate("ForgotPassword")}
+          >
+            <Text style={componentStyles.buttonText}>Forgot Password</Text>
+          </TouchableOpacity>
+
+          {/* <TouchableOpacity
+            style={componentStyles.button}
             onPress={() => navigation.navigate("Login")}
           >
             <Text style={componentStyles.buttonText}>Login Screen</Text>
@@ -55,14 +76,9 @@ const Review = () => {
             onPress={() => navigation.navigate("Email")}
           >
             <Text style={componentStyles.buttonText}>Create account Screen</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
 
-          <TouchableOpacity
-            style={componentStyles.button}
-            onPress={() => navigation.navigate("Verification")}
-          >
-            <Text style={componentStyles.buttonText}>Verification Screen</Text>
-          </TouchableOpacity>
+
         </View>
 
         {/* <AuthHeader /> */}

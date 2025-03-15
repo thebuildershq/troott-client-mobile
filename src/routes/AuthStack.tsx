@@ -12,6 +12,9 @@ import VerificationScreen from "../screens/Auth/VerificationScreen";
 import Review from "../screens/Review";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { useNavigation } from "@react-navigation/native";
+import ForgotPassword from "../screens/Auth/ForgotPassword";
+import ResetPassword from "../screens/Auth/ResetPassword";
+import ForgotPasswordCode from "../screens/Auth/ResetPasswordCode";
 
 const AuthStack = () => {
   const Stack = createNativeStackNavigator();
@@ -93,6 +96,33 @@ const AuthStack = () => {
           headerTitle: "Verify your email",
         }}
         component={VerificationScreen}
+      />
+
+      <Stack.Screen
+        name="ForgotPassword"
+        options={{
+          headerShown: true,
+          headerTitle: "Forgot Password",
+        }}
+        component={ForgotPassword}
+      />
+
+      <Stack.Screen
+        name="ForgotPasswordCode"
+        options={{
+          headerShown: true,
+          headerTitle: "Verify Required",
+        }}
+        component={ForgotPasswordCode}
+      />
+
+      <Stack.Screen
+        name="ResetPassword"
+        options={{
+          headerShown: true,
+          headerTitle: "Reset Password",
+        }}
+        component={ResetPassword}
       />
     </Stack.Navigator>
   );

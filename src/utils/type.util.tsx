@@ -10,7 +10,9 @@ export type TAuthStackList = {
     Email: undefined;
     Register: undefined;
     ForgotPassword: undefined;
+    ForgotPasswordCode: undefined
     ResetPassword: undefined;
+    NewPassword: undefined
     Verification: undefined;
     
     Password: undefined;
