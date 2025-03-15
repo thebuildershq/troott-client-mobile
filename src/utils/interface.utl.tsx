@@ -104,6 +104,21 @@ export interface IPasswordInput {
   maxLength?: number;
 }
 
+export interface IOTPInput {
+  id: string;
+  value: string;
+  label?: string;
+  labelStyle?: Partial<ViewStyle>;
+  onChangeText: (otp: string) => void;
+  onSubmit?: (otp: string) => void;
+  backgroundColor?: Palette | string;
+  borderRadius?: number;
+  paddingVertical?: number;
+  disabled?: boolean;
+  style?: Partial<ViewStyle>;
+  autoCapitalize?: "none" | "sentences" | "words" | "characters";
+  length?: number;
+}
 
 
 export interface IText {

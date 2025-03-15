@@ -28,7 +28,7 @@ const AuthStack = () => {
         contentStyle: {
           flex: 1,
           backgroundColor: palette.baseBlack,
-          marginTop: -40,
+          marginTop: -30,
         },
         headerBackVisible: false,
         headerLeft: () => (
@@ -46,7 +46,10 @@ const AuthStack = () => {
 
       <Stack.Screen
         name="Review"
-        options={{ headerShown: true, headerTitle: "Review" }}
+        options={{
+          headerShown: true,
+          headerTitle: "Review",
+        }}
         component={Review}
       />
 
@@ -85,7 +88,10 @@ const AuthStack = () => {
 
       <Stack.Screen
         name="Verification"
-        options={{ headerShown: false }}
+        options={{
+          headerShown: true,
+          headerTitle: "Verify your email",
+        }}
         component={VerificationScreen}
       />
     </Stack.Navigator>

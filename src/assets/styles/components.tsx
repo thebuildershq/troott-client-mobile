@@ -90,7 +90,28 @@ const componentStyles = StyleSheet.create({
   },
   link: {
     color: palette.green700,
-    textDecorationLine: "underline"
+    textDecorationLine: "underline",
+    marginTop: 15,
+  },
+
+  // ChangeData 
+  clink: {
+    color: palette.grey200,
+    fontFamily: fonts.family.matterBold,
+  },
+
+  dlink: {
+    color: palette.green700,
+    fontFamily: fonts.family.matterMedium,
+    lineHeight: 20,
+  },
+
+  // Resend Code
+  rlink: {
+    color: palette.baseGreen,
+    fontFamily: fonts.family.matterBold,
+    marginTop: 5,
+
   },
 
   // Terms and Conditions
@@ -101,11 +122,18 @@ const componentStyles = StyleSheet.create({
     marginTop: 10,
     fontFamily: fonts.family.matterRegular,
     lineHeight: 20
+  },
+
+  // resend code
+  rSubText: {
+    fontSize: 14,
+    textAlign: "left",
+    color: palette.grey400,
+    fontFamily: fonts.family.matterRegular,
     
   },
 
   //Divider
-
   OrCongtainer: {
     position: "relative", 
     flexDirection: "row",
@@ -178,10 +206,14 @@ const componentStyles = StyleSheet.create({
   tcontainer: {
     flexDirection: "row",
     alignItems: "center",
-    borderRadius: 8,
     paddingHorizontal: 10,
-    backgroundColor: "#fff",
     height: 55,
+    borderWidth: 1,
+    borderColor: palette.grey400,
+    borderRadius: 4,
+    fontFamily: fonts.family.matterRegular,
+    backgroundColor: palette.grey700,
+    color: palette.white,
   },
   toutline: {
     borderWidth: 1,
@@ -200,6 +232,24 @@ const componentStyles = StyleSheet.create({
     marginHorizontal: -50,
     width: 20,
     height: 20,
+  },
+
+  //OTP Input 
+  otpcontainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignSelf: "stretch",
+  },
+  otpBox: {
+    width: 50,
+    height: 60,
+    borderWidth: 1,
+    borderColor: palette.grey400,
+    textAlign: "center",
+    fontSize: 20,
+    borderRadius: 4,
+    backgroundColor: palette.grey700,
+    color: palette.white,
   },
 
 

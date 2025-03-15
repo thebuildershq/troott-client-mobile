@@ -11,6 +11,8 @@ import OAuth from "../designSystem/layouts/OAuth";
 import AuthHeader from "../designSystem/layouts/AuthHeader";
 import Icon from "react-native-vector-icons/FontAwesome";
 import CustomTextInput from "../designSystem/components/Input/CustomTextInput";
+import ChangeData from "../designSystem/layouts/ChangeData";
+import ResendCode from "../designSystem/layouts/ResendCode";
 
 const Review = () => {
   const { control } = useForm();
@@ -26,6 +28,13 @@ const Review = () => {
       </View>
 
       <View style={customStyles.mt20}>
+
+        <View>
+
+          {/* <ResendCode/> */}
+
+        </View>
+
         <View>
           <TouchableOpacity
             style={componentStyles.button}
@@ -33,17 +42,26 @@ const Review = () => {
           >
             <Text style={componentStyles.buttonText}>Welcome Screen</Text>
           </TouchableOpacity>
+
           <TouchableOpacity
             style={componentStyles.button}
             onPress={() => navigation.navigate("Login")}
           >
             <Text style={componentStyles.buttonText}>Login Screen</Text>
           </TouchableOpacity>
+          
           <TouchableOpacity
             style={componentStyles.button}
             onPress={() => navigation.navigate("Email")}
           >
             <Text style={componentStyles.buttonText}>Create account Screen</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={componentStyles.button}
+            onPress={() => navigation.navigate("Verification")}
+          >
+            <Text style={componentStyles.buttonText}>Verification Screen</Text>
           </TouchableOpacity>
         </View>
 
