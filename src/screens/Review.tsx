@@ -19,14 +19,30 @@ const Review = () => {
 
   return (
     <SafeAreaView style={customStyles.container}>
-      
       <View>
-        <Text style={customStyles.text}>Review components and screens here</Text>
+        <Text style={customStyles.text}>
+          Review components and screens here
+        </Text>
       </View>
 
       <View style={customStyles.mt20}>
-        <AuthHeader />
-        
+        <View>
+          <TouchableOpacity
+            style={componentStyles.button}
+            onPress={() => navigation.navigate("Welcome")}
+          >
+            <Text style={componentStyles.buttonText}>Welcome Screen</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={componentStyles.button}
+            onPress={() => navigation.navigate("Login")}
+          >
+            <Text style={componentStyles.buttonText}>Login Screen</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* <AuthHeader /> */}
+        {/*         
         <View>
           <CustomTextInput
             value={text}
@@ -46,11 +62,11 @@ const Review = () => {
               </TouchableOpacity>
             }
           />
-        </View>
+        </View> */}
 
-        <View style={customStyles.mt20}></View>
+        {/* <View style={customStyles.mt20}></View> */}
 
-        <View>
+        {/* <View>
           <CustomTextInput
             value={text}
             id="text"
@@ -64,9 +80,9 @@ const Review = () => {
           />
         </View>
 
-        <View style={customStyles.mt20}></View>
+        <View style={customStyles.mt20}></View> */}
 
-        <View>
+        {/* <View>
           <CustomTextInput
             value={text}
             id="text"
@@ -80,23 +96,7 @@ const Review = () => {
               <Icon name="user" size={20} color={palette.grey400} />
             }
           />
-        </View>
-
-
-        <View>
-          <TouchableOpacity
-            style={componentStyles.button}
-            onPress={() => navigation.navigate("Welcome")}
-          >
-            <Text style={componentStyles.buttonText}>Welcome Screen</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={componentStyles.button}
-            onPress={() => navigation.navigate("Login")}
-          >
-            <Text style={componentStyles.buttonText}>Login Screen</Text>
-          </TouchableOpacity>
-        </View>
+        </View> */}
       </View>
     </SafeAreaView>
   );

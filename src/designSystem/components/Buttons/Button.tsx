@@ -5,9 +5,10 @@ import { spacing } from "../../theme/spacing";
 import { palette } from "../../theme/palette";
 import { fonts } from "../../theme/font";
 import { IButton } from "../../../utils/interface.utl";
+import componentStyles from "../../../assets/styles/components";
 
 
-export const Button = ( Bprops: IButton) => {
+const Button = ( Bprops: IButton) => {
   
   const {
     title,
@@ -77,7 +78,7 @@ export const Button = ( Bprops: IButton) => {
     <TouchableOpacity onPress={onPress} disabled={disabled || loading} activeOpacity={0.7}>
       <View
         style={[
-          styles.buttonBase,
+          componentStyles.oAuthbuttonBase,
           getVariantStyles(),
           {
             alignSelf,
@@ -96,9 +97,9 @@ export const Button = ( Bprops: IButton) => {
           <Feather name="loader" size={32} color={variant === "outline" ? palette.baseWhite ? "grey": palette.green400 : palette.baseBlack} />
           </Animated.View>
         ) : (
-          <View style={left || right ? styles.row : {}}>
+          <View style={left || right ? componentStyles.row : {}}>
             {left}
-            <Text style={[styles.text, { color: variant === "outline" ? (palette[backgroundColor as keyof typeof palette] || "grey") : palette[color as keyof typeof palette] }]}>
+            <Text style={[componentStyles.buttonText, { color: variant === "outline" ? (palette[backgroundColor as keyof typeof palette] || "grey") : palette[color as keyof typeof palette] }]}>
               {title}
             </Text>
             {right}
@@ -109,19 +110,4 @@ export const Button = ( Bprops: IButton) => {
   );
 };
 
-const styles = StyleSheet.create({
-  buttonBase: {
-    alignItems: "center",
-    justifyContent: "center",
-    marginVertical: spacing.space8,
-  },
-  text: {
-    fontFamily: fonts.family.matterBold,
-    fontSize: 16,
-  },
-  row: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 10,
-  },
-});
+export default Button

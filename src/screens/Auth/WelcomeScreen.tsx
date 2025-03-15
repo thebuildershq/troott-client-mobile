@@ -5,7 +5,7 @@ import customStyles from "../../assets/styles/custom";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { IMAGES } from "../../assets/images/images";
 import CustomImage from "../../designSystem/components/Images/Images";
-import { Button } from "../../designSystem/components/Buttons/Button";
+import  Button  from "../../designSystem/components/Buttons/Button";
 import { spacing } from "../../designSystem/theme/spacing";
 import { palette } from "../../designSystem/theme/palette";
 

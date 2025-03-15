@@ -6,7 +6,7 @@ import componentStyles from "../../assets/styles/components";
 const AuthHeader = () => {
   return (
     <View>
-      <View style={customStyles.mt10}></View>
+      <View style={customStyles.mt30}></View>
       <Text style={componentStyles.title}>Log In or Create an Account</Text>
       <View style={customStyles.mt10}></View>
       <Text style={componentStyles.subText}>

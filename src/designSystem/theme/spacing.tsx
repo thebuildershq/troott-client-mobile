@@ -1,7 +1,8 @@
 export const spacing = {
     none: 0,
     space2: 2,   
-    space4: 4, 
+    space4: 4,
+    space6: 6, 
     space8: 8,
     space10: 10,
     space12: 12,
@@ -19,3 +20,4 @@ export const spacing = {
 } as const;
 
 export type Spacing = keyof typeof spacing;
+

@@ -41,16 +41,16 @@ const componentStyles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     paddingHorizontal: 130,
-    paddingVertical: 23,
-    backgroundColor: palette.lightBlue,
+    paddingVertical: 18,
+    backgroundColor: palette.baseGreen,
   },
   buttonText: {
-    color: palette.white,
-    fontFamily: fonts.family.matterBold,
+    color: palette.baseBlack,
+    fontFamily: fonts.family.matterMedium,
   },
   //ButtonPrimary
   buttonPrimary: {
-    backgroundColor: palette.lightBlue,
+    backgroundColor: palette.baseGreen,
   },
   //ButtonSecondary
   buttonSecondary: {
@@ -65,6 +65,7 @@ const componentStyles = StyleSheet.create({
     borderWidth: 1,
   },
 
+  
   //Auth Styles
   backButton: {
     position: "absolute",
@@ -132,42 +133,24 @@ const componentStyles = StyleSheet.create({
 
 
   //OAuth
-  oAuthbutton: {
-    padding: spacing.space16,
-    marginVertical: spacing.space8,
-    borderRadius: spacing.space4,
+  oAuthbuttonBase: {
     alignItems: "center",
+    justifyContent: "center",
+    marginVertical: spacing.space8,
+  },
+  oAuthtext: {
+    fontFamily: fonts.family.matterLight,
+    fontSize: 16,
+  },
+  oAuthrow: {
     flexDirection: "row",
-    paddingHorizontal: 130,
-    paddingVertical: 23,
-    backgroundColor: palette.lightBlue,
-  },
-  appleButton: {
-    backgroundColor: "#000",
-  },
-  googleButton: {
-    backgroundColor: "#fff",
-    borderWidth: 1,
-    borderColor: "#ddd",
-  },
-  oAuthbuttonText: {
-    color: palette.white,
-    fontFamily: fonts.family.matterBold,
-    fontSize: 16,
-    marginLeft: 10,
-  },
-  buttonTextGoogle: {
-    fontSize: 16,
-    marginLeft: 10,
-    fontFamily: fonts.family.matterBold,
-    color: palette.white,
+    alignItems: "center",
+    gap: 10,
   },
   icon: {
     marginRight: 8,
-  },
-  googleIcon: {
-    width: 20,
-    height: 20,
+    width: 18,
+    height: 18,
   },
 
 
@@ -204,6 +187,8 @@ const componentStyles = StyleSheet.create({
   },
   ticon: {
     marginHorizontal: -50,
+    width: 20,
+    height: 20,
   },
 });
 

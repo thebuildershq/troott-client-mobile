@@ -12,7 +12,7 @@ import { palette } from "../../designSystem/theme/palette";
 import { INavigation } from "../../utils/type.util";
  import CustomTextInput from "../../designSystem/components/Input/TextInput";
 import PasswordInput from "../../designSystem/components/Input/PasspwordInput";
-import { Button } from "../../designSystem/components/Buttons/Button";
+import  Button  from "../../designSystem/components/Buttons/Button";
 import { spacing } from "../../designSystem/theme/spacing";
 import componentStyles from "../../assets/styles/components";
 //import CustomTextInput from "../../designSystem/components/Input/CustomTextInput";
@@ -21,9 +21,15 @@ const LoginScreen = () => {
   const navigation = useNavigation<INavigation>();
   const [text, setText] = useState("");
   const [password, setPassword] = useState("")
+  const [loginUser, setLoginUser] = useState(false);
+  
 
   const handleSubmit = () => {
-    return
+    setLoginUser(true)
+    setTimeout(() => {
+      navigation.navigate("Welcome");
+      setLoginUser(false);
+    }, 2000);
   }
 
   return (
@@ -45,9 +51,8 @@ const LoginScreen = () => {
               keyboardType="default"
               variant="outline"
               disabled={false}
-              rightIcon={<Icon name="check" size={16} color={palette.white} />}
               backgroundColor={palette.grey700}
-              leftIcon={<Icon name="envelope" size={16} color={palette.white} />}
+              leftIcon={<Icon name="envelope" size={16} color={palette.grey400} />}
             />
           </View>
 
@@ -66,10 +71,10 @@ const LoginScreen = () => {
             variant="outline"
             disabled={false}
             borderRadius={spacing.space64}
-            showPasswordIcon={<Icon name="eye" size={20} color="gray" />}
-            hidePasswordIcon={<Icon name="eye-slash" size={20} color="gray" />}
+            showPasswordIcon={<Icon name="eye" size={20} color={palette.grey400} />}
+            hidePasswordIcon={<Icon name="eye-slash" size={20} color={palette.grey400} />}
             backgroundColor={palette.grey700}
-            leftIcon={<Icon name="lock" size={18} color={palette.grey100} />}
+            leftIcon={<Icon name="lock" size={18} color={palette.grey400} />}
             />
             
           </View>
@@ -80,19 +85,19 @@ const LoginScreen = () => {
             <Text style={componentStyles.urlText}>Forgot Password?</Text>
           </View>
 
+          <View style={customStyles.mt5}></View>
+
           <Button 
           title="Continue"
+          variant="primary"
           onPress={handleSubmit}
           paddingVertical={spacing.space18}
-          disabled={false}
-          loading={false}
+          disabled={loginUser}
+          loading={loginUser}
           borderRadius={spacing.space4}
 
           ></Button>
-
           
-
-          <View style={customStyles.mt5}></View>
           <OAuth />
         </View>
       </AuthRoot>

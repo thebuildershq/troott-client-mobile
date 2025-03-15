@@ -3,7 +3,7 @@ import React from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 import componentStyles from "../../assets/styles/components";
 import customStyles from "../../assets/styles/custom";
-import { Button } from "../components/Buttons/Button";
+import Button  from "../components/Buttons/Button";
 import { palette } from "../theme/palette";
 import { spacing } from "../theme/spacing";
 
@@ -27,28 +27,29 @@ const OAuth = () => {
   };
 
   return (
-    <View style={customStyles.mt10}>
+    <View>
       <View style={componentStyles.OrCongtainer}>
         <View style={componentStyles.line} />
         <Text style={componentStyles.orText}>or</Text>
         <View style={componentStyles.line} />
       </View>
 
-      <View style={customStyles.mt25}></View>
+      <View style={[customStyles.mt10, ]}></View>
+
       <Button
         title="Sign in with Apple"
         variant="outline"
         left={
           <Icon
             name="apple"
-            size={20}
-            color="white"
+            size={18}
+            color={palette.baseWhite}
             style={componentStyles.icon}
           />
         }
         backgroundColor={palette.baseWhite}
         paddingVertical={spacing.space16}
-        borderRadius={spacing.space4}
+        borderRadius={spacing.space6}
         onPress={signInWithApple}
         loading={false}
         disabled={false}
@@ -60,8 +61,8 @@ const OAuth = () => {
         left={
           <Icon
             name="google"
-            size={20}
-            color="white"
+            size={18}
+            color={palette.baseWhite}
             style={componentStyles.icon}
           />
         }
