@@ -56,7 +56,6 @@ export interface IButton {
 
 export interface ITextInput {
   id: string;
-  name: string
   value: string;
   label?: string;
   labelStyle?: Partial<ViewStyle>;
@@ -80,7 +79,6 @@ export interface ITextInput {
 
 export interface IPasswordInput {
   id: string;
-  name: string
   value: string;
   label?: string;
   labelStyle?: Partial<ViewStyle>;
@@ -91,6 +89,10 @@ export interface IPasswordInput {
   variant?: "outline" | "filled" | "transparent";
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
+  onRightIconPress?: () => void;
+  onTogglePassword?: () => void;
+  showPasswordIcon?: React.ReactNode;
+  hidePasswordIcon?: React.ReactNode;
   backgroundColor?: Palette | string;
   borderRadius?: number;
   paddingVertical?: number;
@@ -99,7 +101,6 @@ export interface IPasswordInput {
   style?: Partial<ViewStyle>;
   autoCapitalize?: "none" | "sentences" | "words" | "characters";
   maxLength?: number;
-  clearButton?: boolean;
 }
 
 

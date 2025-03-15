@@ -75,6 +75,7 @@ const Review = () => {
             onChangeText={(val) => setText(val)}
             keyboardType="phone-pad"
             variant="outline"
+            rightIcon={<Icon name="eye" size={18} color={palette.grey100} />}
             leftIcon={
               <Icon name="user" size={20} color={palette.grey400} />
             }

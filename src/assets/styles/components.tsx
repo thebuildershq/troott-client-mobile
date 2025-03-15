@@ -11,6 +11,7 @@ const componentStyles = StyleSheet.create({
     paddingVertical: spacing.space8,
     borderRadius: spacing.space8,
     width: "95%",
+    
   },
   row: {
     flexDirection: "row",
@@ -18,6 +19,8 @@ const componentStyles = StyleSheet.create({
   },
   input: {
     width: "100%",
+    color: palette.white,
+    fontFamily: fonts.family.matterLight,
   },
   errorText: {
     color: "red",
@@ -71,7 +74,6 @@ const componentStyles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    fontWeight: "bold",
     textAlign: "center",
     color: palette.white,
     fontFamily: fonts.family.matterBold,
@@ -81,10 +83,13 @@ const componentStyles = StyleSheet.create({
     textAlign: "center",
     color: palette.white,
     marginTop: 10,
+    fontFamily: fonts.family.matterRegular,
+    lineHeight: 20
+    
   },
   link: {
-    color: "#007BFF",
-    fontWeight: "600",
+    color: palette.green700,
+    textDecorationLine: "underline"
   },
 
   //Divider
@@ -113,6 +118,16 @@ const componentStyles = StyleSheet.create({
     left: 165.5,
     paddingHorizontal: 10,
     zIndex: 1
+  },
+
+  urlText: {
+    fontSize: 14,
+    textAlign: "left",
+    color: palette.grey400,
+    marginBottom: 10,
+    fontFamily: fonts.family.matterRegular,
+    lineHeight: 20,
+    textDecorationLine: "underline"
   },
 
 
@@ -157,14 +172,14 @@ const componentStyles = StyleSheet.create({
 
 
   // TextInput
-  wrapper: {
+  twrapper: {
     width: "100%",
   },
-  label: {
+  tlabel: {
     fontSize: 14,
-    fontWeight: "500",
-    color: palette.grey800,
-    marginBottom: 5,
+    fontFamily: fonts.family.matterRegular,
+    color: palette.white,
+    marginBottom: 8,
   },
   tcontainer: {
     flexDirection: "row",
@@ -172,9 +187,9 @@ const componentStyles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 10,
     backgroundColor: "#fff",
-    height: 50,
+    height: 55,
   },
-  outline: {
+  toutline: {
     borderWidth: 1,
     borderColor: "#ccc",
   },
@@ -184,11 +199,11 @@ const componentStyles = StyleSheet.create({
     color: palette.white,
     paddingVertical: 10,
   },
-  disabledInput: {
+  tdisabledInput: {
     color: palette.grey900,
   },
   ticon: {
-    marginHorizontal: 8,
+    marginHorizontal: -50,
   },
 });
 

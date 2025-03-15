@@ -6,9 +6,9 @@ import componentStyles from "../../../assets/styles/components";
 
 
 const CustomTextInput = (textProps: ITextInput) => {
+ 
   const {
     id,
-    name,
     value,
     label,
     labelStyle,
@@ -29,13 +29,13 @@ const CustomTextInput = (textProps: ITextInput) => {
   } = textProps;
 
   return (
-    <View style={[componentStyles.wrapper, style]}>
-      {label && <Text style={[componentStyles.label, labelStyle]}>{label}</Text>}
+    <View style={[componentStyles.twrapper, style]}>
+      {label && <Text style={[componentStyles.tlabel, labelStyle]}>{label}</Text>}
 
       <View
         style={[
           componentStyles.tcontainer,
-          variant === "outline" && componentStyles.outline,
+          variant === "outline" && componentStyles.toutline,
           { backgroundColor: disabled ? palette.grey700 : backgroundColor },
         ]}
       >
@@ -43,7 +43,7 @@ const CustomTextInput = (textProps: ITextInput) => {
 
         <TextInput
           id={id}
-          style={[componentStyles.input, disabled && componentStyles.disabledInput]}
+          style={[componentStyles.input, disabled && componentStyles.tdisabledInput]}
           value={value}
           secureTextEntry={secureTextEntry}
           placeholder={placeholder}

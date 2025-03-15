@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import { View, TextInput, Text } from "react-native";
-import { palette} from "../../theme/palette";
+import { View, TextInput, Text, TouchableOpacity } from "react-native";
+import { palette } from "../../theme/palette";
 import { IPasswordInput } from "../../../utils/interface.utl";
 import componentStyles from "../../../assets/styles/components";
-
+import Icon from "react-native-vector-icons/FontAwesome";
 
 const PasswordInput = (PProps: IPasswordInput) => {
-  
-    const {
+  const {
     id,
-    name,
     value,
     label,
     labelStyle,
@@ -20,6 +18,8 @@ const PasswordInput = (PProps: IPasswordInput) => {
     variant = "outline",
     leftIcon,
     rightIcon,
+    showPasswordIcon,
+    hidePasswordIcon,
     backgroundColor,
     paddingVertical,
     borderRadius,
@@ -32,13 +32,15 @@ const PasswordInput = (PProps: IPasswordInput) => {
   const [isSecure, setIsSecure] = useState(secureTextEntry);
 
   return (
-    <View style={[componentStyles.wrapper, style]}>
-      {label && <Text style={[componentStyles.label, labelStyle]}>{label}</Text>}
+    <View style={[componentStyles.twrapper, style]}>
+      {label && (
+        <Text style={[componentStyles.tlabel, labelStyle]}>{label}</Text>
+      )}
 
       <View
         style={[
           componentStyles.tcontainer,
-          variant === "outline" && componentStyles.outline,
+          variant === "outline" && componentStyles.toutline,
           { backgroundColor: disabled ? palette.grey700 : backgroundColor },
         ]}
       >
@@ -46,20 +48,36 @@ const PasswordInput = (PProps: IPasswordInput) => {
 
         <TextInput
           id={id}
-          style={[componentStyles.input, disabled && componentStyles.disabledInput]}
+          style={[
+            componentStyles.input,
+            disabled && componentStyles.tdisabledInput,
+          ]}
           value={value}
-          secureTextEntry={secureTextEntry}
+          key={id}
+          secureTextEntry={isSecure}
           placeholder={placeholder}
           placeholderTextColor={placeholderColor || palette.grey100}
           onChangeText={!disabled ? onChangeText : undefined}
           keyboardType={keyboardType}
           editable={!disabled}
+          maxLength={props.maxLength}
+          autoCapitalize={props.autoCapitalize}
           accessibilityLabel={label || placeholder}
           accessibilityHint="Text input field"
           {...props}
         />
 
-        {rightIcon && <View style={componentStyles.ticon}>{rightIcon}</View>}
+        {secureTextEntry ? (
+          <TouchableOpacity
+            style={componentStyles.ticon}
+            onPress={() => setIsSecure((prev) => !prev)}
+          >
+            {isSecure ? hidePasswordIcon : showPasswordIcon}
+          </TouchableOpacity>
+        ) : (
+          rightIcon && <View style={componentStyles.ticon}>{rightIcon}</View>
+        )}
+        
       </View>
     </View>
   );
