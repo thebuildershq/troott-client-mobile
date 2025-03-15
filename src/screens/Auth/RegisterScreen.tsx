@@ -36,7 +36,7 @@ const RegisterScreen = () => {
     <SafeAreaView>
       <AuthRoot>
         <View>
-          <AuthHeader />
+
 
           <View style={[customStyles.mt20]}></View>
 

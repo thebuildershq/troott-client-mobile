@@ -1,3 +1,4 @@
+import { TouchableOpacity } from "react-native";
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { palette } from "../designSystem/theme/palette";
@@ -9,9 +10,12 @@ import LoginScreen from "../screens/Auth/LoginScreen";
 import RegisterScreen from "../screens/Auth/RegisterScreen";
 import VerificationScreen from "../screens/Auth/VerificationScreen";
 import Review from "../screens/Review";
+import Icon from "react-native-vector-icons/FontAwesome";
+import { useNavigation } from "@react-navigation/native";
 
 const AuthStack = () => {
   const Stack = createNativeStackNavigator();
+  const navigation = useNavigation();
 
   return (
     <Stack.Navigator
@@ -24,9 +28,14 @@ const AuthStack = () => {
         contentStyle: {
           flex: 1,
           backgroundColor: palette.baseBlack,
+          marginTop: -40,
         },
         headerBackVisible: false,
-        
+        headerLeft: () => (
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Icon name="arrow-left" size={20} color={palette.grey400} />
+          </TouchableOpacity>
+        ),
       }}
     >
       <Stack.Screen
@@ -49,20 +58,28 @@ const AuthStack = () => {
 
       <Stack.Screen
         name="Login"
-        options={{ headerShown: false }}
-        
+        options={{
+          headerShown: true,
+          headerTitle: "Create Your Account",
+        }}
         component={LoginScreen}
       />
 
       <Stack.Screen
         name="Email"
-        options={{ headerShown: false }}
+        options={{
+          headerShown: true,
+          headerTitle: "Create Your Account",
+        }}
         component={EnterEmail}
       />
 
       <Stack.Screen
         name="Register"
-        options={{ headerShown: false }}
+        options={{
+          headerShown: true,
+          headerTitle: "Create Your Account",
+        }}
         component={RegisterScreen}
       />
 
