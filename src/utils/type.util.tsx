@@ -10,14 +10,15 @@ export type TAuthStackList = {
     Email: undefined;
     Register: undefined;
     ForgotPassword: undefined;
+    ForgotPasswordEmail: undefined
     ForgotPasswordCode: undefined
     ResetPassword: undefined;
     NewPassword: undefined
     Verification: undefined;
-    
     Password: undefined;
     ChooseMinisters: undefined;
     GreatPicks: Array<any>;
+    Home: undefined
   };
 
 export type INavigation = NativeStackNavigationProp<TAuthStackList>;

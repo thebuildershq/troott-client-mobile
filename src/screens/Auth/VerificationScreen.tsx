@@ -21,7 +21,7 @@ const VerificationScreen = () => {
   const handleSubmit = () => {
     setRegisterUser(true);
     setTimeout(() => {
-      navigation.navigate("Welcome");
+      navigation.navigate("ChooseMinisters");
       setRegisterUser(false);
     }, 2000);
   };

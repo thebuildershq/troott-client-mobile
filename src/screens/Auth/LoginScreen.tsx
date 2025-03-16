@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -9,27 +9,25 @@ import AuthHeader from "../../designSystem/layouts/AuthHeader";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { palette } from "../../designSystem/theme/palette";
 import { INavigation } from "../../utils/type.util";
- import CustomTextInput from "../../designSystem/components/Input/TextInput";
+import CustomTextInput from "../../designSystem/components/Input/TextInput";
 import PasswordInput from "../../designSystem/components/Input/PasspwordInput";
-import  Button  from "../../designSystem/components/Buttons/Button";
+import Button from "../../designSystem/components/Buttons/Button";
 import { spacing } from "../../designSystem/theme/spacing";
 import componentStyles from "../../assets/styles/components";
-//import CustomTextInput from "../../designSystem/components/Input/CustomTextInput";
 
 const LoginScreen = () => {
   const navigation = useNavigation<INavigation>();
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("")
+  const [password, setPassword] = useState("");
   const [loginUser, setLoginUser] = useState(false);
-  
 
   const handleSubmit = () => {
-    setLoginUser(true)
+    setLoginUser(true);
     setTimeout(() => {
-      navigation.navigate("Welcome");
+      navigation.navigate("Home");
       setLoginUser(false);
     }, 2000);
-  }
+  };
 
   return (
     <SafeAreaView>
@@ -51,7 +49,9 @@ const LoginScreen = () => {
               variant="outline"
               disabled={false}
               backgroundColor={palette.grey700}
-              leftIcon={<Icon name="envelope" size={16} color={palette.grey400} />}
+              leftIcon={
+                <Icon name="envelope" size={16} color={palette.grey400} />
+              }
             />
           </View>
 
@@ -59,46 +59,47 @@ const LoginScreen = () => {
 
           <View>
             <PasswordInput
-            id="password"
-            label="Password"
-            key={"paswword"}
-            placeholder="Enter your password"
-            value={password}
-            secureTextEntry={true}
-            onChangeText={(val) => setPassword(val)}
-            keyboardType="default"
-            variant="outline"
-            disabled={false}
-            borderRadius={spacing.space64}
-            showPasswordIcon={<Icon name="eye" size={20} color={palette.grey400} />}
-            hidePasswordIcon={<Icon name="eye-slash" size={20} color={palette.grey400} />}
-            backgroundColor={palette.grey700}
-            leftIcon={<Icon name="lock" size={18} color={palette.grey400} />}
+              id="password"
+              label="Password"
+              key={"paswword"}
+              placeholder="Enter your password"
+              value={password}
+              secureTextEntry={true}
+              onChangeText={(val) => setPassword(val)}
+              keyboardType="default"
+              variant="outline"
+              disabled={false}
+              borderRadius={spacing.space64}
+              showPasswordIcon={
+                <Icon name="eye" size={20} color={palette.grey400} />
+              }
+              hidePasswordIcon={
+                <Icon name="eye-slash" size={20} color={palette.grey400} />
+              }
+              backgroundColor={palette.grey700}
+              leftIcon={<Icon name="lock" size={18} color={palette.grey400} />}
             />
-            
           </View>
 
           <View style={customStyles.mt20}></View>
 
-          <View>
+          <TouchableOpacity onPress={() => navigation.navigate("ForgotPassword")}>
             <Text style={componentStyles.urlText}>Forgot Password?</Text>
-          </View>
+          </TouchableOpacity>
 
           <View style={customStyles.mt5}></View>
 
-          <Button 
-          title="Continue"
-          variant="primary"
-          onPress={handleSubmit}
-          paddingVertical={spacing.space18}
-          disabled={loginUser}
-          loading={loginUser}
-          borderRadius={spacing.space4}
-
+          <Button
+            title="Continue"
+            variant="primary"
+            onPress={handleSubmit}
+            paddingVertical={spacing.space18}
+            disabled={loginUser}
+            loading={loginUser}
+            borderRadius={spacing.space4}
           ></Button>
-          
-          <OAuth />
 
+          <OAuth />
         </View>
       </AuthRoot>
     </SafeAreaView>

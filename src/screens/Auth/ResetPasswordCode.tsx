@@ -21,7 +21,7 @@ const ForgotPasswordCode = () => {
   const handleSubmit = () => {
     setRegisterUser(true);
     setTimeout(() => {
-      navigation.navigate("Welcome");
+      navigation.navigate("ResetPassword");
       setRegisterUser(false);
     }, 2000);
   };

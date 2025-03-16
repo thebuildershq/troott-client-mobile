@@ -15,6 +15,9 @@ import { useNavigation } from "@react-navigation/native";
 import ForgotPassword from "../screens/Auth/ForgotPassword";
 import ResetPassword from "../screens/Auth/ResetPassword";
 import ForgotPasswordCode from "../screens/Auth/ResetPasswordCode";
+import SelectMinisters from "../screens/Preferences/SelectMinisters";
+import ForgotPasswordEmail from "../screens/Auth/ChangePassword";
+import Home from "../screens/Dashboard/Home";
 
 const AuthStack = () => {
   const Stack = createNativeStackNavigator();
@@ -66,7 +69,7 @@ const AuthStack = () => {
         name="Login"
         options={{
           headerShown: true,
-          headerTitle: "Create Your Account",
+          headerTitle: "Login to your account",
         }}
         component={LoginScreen}
       />
@@ -99,6 +102,15 @@ const AuthStack = () => {
       />
 
       <Stack.Screen
+        name="ChangePassword"
+        options={{
+          headerShown: true,
+          headerTitle: "Chnage Password",
+        }}
+        component={ForgotPasswordEmail}
+      />
+
+      <Stack.Screen
         name="ForgotPassword"
         options={{
           headerShown: true,
@@ -124,6 +136,24 @@ const AuthStack = () => {
         }}
         component={ResetPassword}
       />
+
+      <Stack.Screen
+        name="ChooseMinisters"
+        options={{
+          headerShown: true,
+          headerTitle: "Pick Ministers you like",
+        }}
+        component={SelectMinisters}
+      />
+
+      <Stack.Screen
+        name="Home"
+        options={{
+          headerShown: false,
+        }}
+        component={Home}
+      />
+
     </Stack.Navigator>
   );
 };
