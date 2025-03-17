@@ -24,7 +24,7 @@ const LoginScreen = () => {
   const handleSubmit = () => {
     setLoginUser(true);
     setTimeout(() => {
-      navigation.navigate("Explore");
+      navigation.navigate("Home");
       setLoginUser(false);
     }, 2000);
   };

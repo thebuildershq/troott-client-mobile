@@ -48,7 +48,8 @@ function AppStack() {
       <Tab.Screen
         name="Home"
         component={Home}
-        options={{ tabBarLabel: "Home" }}
+
+        options={{ tabBarLabel: "Home", headerShown: false }}
       />
 
       <Tab.Screen
