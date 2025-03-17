@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AuthRoot from "../../designSystem/layouts/AuthRoot";
 import customStyles from "../../assets/styles/custom";
-import AuthHeader from "../../designSystem/layouts/AuthHeader";
-import OAuth from "../../designSystem/layouts/OAuth";
+import AuthHeader from "../../designSystem/containers/AuthHeader";
+import OAuth from "../../designSystem/containers/OAuth";
 import CustomTextInput from "../../designSystem/components/Input/TextInput";
 import { palette } from "../../designSystem/theme/palette";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -12,7 +12,7 @@ import Button from "../../designSystem/components/Buttons/Button";
 import { useNavigation } from "@react-navigation/native";
 import { INavigation } from "../../utils/type.util";
 import { spacing } from "../../designSystem/theme/spacing";
-import ResetSubtext from "../../designSystem/layouts/ResetSubtext";
+import ResetSubtext from "../../designSystem/containers/ResetSubtext";
 import PasswordInput from "../../designSystem/components/Input/PasspwordInput";
 
 const ResetPassword = () => {

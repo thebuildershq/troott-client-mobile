@@ -1,79 +1,81 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Home from "../screens/tabs/Home";
+import Search from "../screens/tabs/Search";
+import Library from "../screens/tabs/Library";
+import Profile from "../screens/tabs/Profile";
 import { palette } from "../designSystem/theme/palette";
+import Icon from "react-native-vector-icons/FontAwesome";
+import Explore from "../screens/tabs/Explore";
 import { fonts } from "../designSystem/theme/font";
-import SplashScreen from "../screens/Auth/SplashScreen";
-import WelcomeScreen from "../screens/Auth/WelcomeScreen";
-import EnterEmail from "../screens/Auth/EnterEmail";
-import LoginScreen from "../screens/Auth/LoginScreen";
-import RegisterScreen from "../screens/Auth/RegisterScreen";
-import VerificationScreen from "../screens/Auth/VerificationScreen";
-import Review from "../screens/Review";
 
-const AppStack = () => {
-  const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
+function AppStack() {
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerTitle: "Create Account",
-        headerStyle: { backgroundColor: palette.baseBlack },
-        headerTitleAlign: "center",
-        headerTintColor: palette.white,
-        headerTitleStyle: { fontFamily: fonts.family.matterBold },
-        contentStyle: {
-          flex: 1,
-          backgroundColor: palette.baseBlack,
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        headerShown: false,
+        tabBarActiveTintColor: palette.baseGreen,
+        tabBarInactiveTintColor: palette.baseWhite,
+        tabBarStyle: {
+          backgroundColor: palette.baseGrey,
+          borderColor: "transparent",
+          position: "absolute",
+          height: 100,
+          paddingTop: 10,
+          bottom: 0, 
+          fontFamily: fonts.family.matterMedium,
         },
-        headerBackVisible: false,
-      }}
+        tabBarLabelStyle: {
+          marginTop: 5,
+          fontSize: 12,
+          fontFamily: fonts.family.matterRegular, 
+          color: palette.baseWhite,
+          textAlign: "center"
+        },
+        tabBarIcon: ({ color, size }) => {
+          let iconName: string = "";
+          if (route.name === "Home") iconName = "home";
+          else if (route.name === "Search") iconName = "search";
+          else if (route.name === "Explore") iconName = "compass";
+          else if (route.name === "Library") iconName = "book";
+          else if (route.name === "Profile") iconName = "user";
+
+          return <Icon name={iconName} size={size} color={color} />;
+        },
+      })}
     >
-      <Stack.Screen
-        name="Splash"
-        options={{ headerShown: false }}
-        component={SplashScreen}
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{ tabBarLabel: "Home" }}
       />
 
-      <Stack.Screen
-        name="Welcome"
-        options={{ headerShown: false }}
-        component={WelcomeScreen}
+      <Tab.Screen
+        name="Search"
+        component={Search}
+        options={{ tabBarLabel: "Search" }}
       />
 
-      <Stack.Screen
-        name="Review"
-        options={{ headerShown: false }}
-        component={Review}
+      <Tab.Screen
+        name="Explore"
+        component={Explore}
+        options={{ tabBarLabel: "Explore" }}
       />
 
-      <Stack.Screen
-        name="Login"
-        options={{ headerShown: false }}
-        component={LoginScreen}
+      <Tab.Screen
+        name="Library"
+        component={Library}
+        options={{ tabBarLabel: "Library" }}
       />
 
-      <Stack.Screen
-        name="EnterEmail"
-        options={{ headerShown: false }}
-        component={EnterEmail}
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{ tabBarLabel: "Profile" }}
       />
-
-      <Stack.Screen
-        name="Register"
-        options={{ headerShown: false }}
-        component={RegisterScreen}
-      />
-
-      <Stack.Screen
-        name="Verification"
-        options={{ headerShown: false }}
-        component={VerificationScreen}
-      />
-    </Stack.Navigator>
+    </Tab.Navigator>
   );
-};
+}
 
 export default AppStack;
-
-const styles = StyleSheet.create({});

@@ -4,8 +4,8 @@ import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import customStyles from "../../assets/styles/custom";
 import AuthRoot from "../../designSystem/layouts/AuthRoot";
-import OAuth from "../../designSystem/layouts/OAuth";
-import AuthHeader from "../../designSystem/layouts/AuthHeader";
+import OAuth from "../../designSystem/containers/OAuth";
+import AuthHeader from "../../designSystem/containers/AuthHeader";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { palette } from "../../designSystem/theme/palette";
 import { INavigation } from "../../utils/type.util";
@@ -24,7 +24,7 @@ const LoginScreen = () => {
   const handleSubmit = () => {
     setLoginUser(true);
     setTimeout(() => {
-      navigation.navigate("Home");
+      navigation.navigate("Explore");
       setLoginUser(false);
     }, 2000);
   };

@@ -19,6 +19,7 @@ export type TAuthStackList = {
     ChooseMinisters: undefined;
     GreatPicks: Array<any>;
     Home: undefined
+    Explore: undefined
   };
 
 export type INavigation = NativeStackNavigationProp<TAuthStackList>;

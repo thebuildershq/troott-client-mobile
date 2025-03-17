@@ -10,7 +10,7 @@ import Button from "../../designSystem/components/Buttons/Button";
 import { useNavigation } from "@react-navigation/native";
 import { INavigation } from "../../utils/type.util";
 import { spacing } from "../../designSystem/theme/spacing";
-import ResetSubtext from "../../designSystem/layouts/ResetSubtext";
+import ResetSubtext from "../../designSystem/containers/ResetSubtext";
 
 const ForgotPassword = () => {
   const navigation = useNavigation<INavigation>();

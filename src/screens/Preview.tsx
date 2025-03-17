@@ -7,14 +7,15 @@ import { useNavigation } from "@react-navigation/native";
 import { INavigation } from "../utils/type.util";
 import { palette } from "../designSystem/theme/palette";
 import { useForm } from "react-hook-form";
-import OAuth from "../designSystem/layouts/OAuth";
-import AuthHeader from "../designSystem/layouts/AuthHeader";
+import OAuth from "../designSystem/containers/OAuth";
+import AuthHeader from "../designSystem/containers/AuthHeader";
 import Icon from "react-native-vector-icons/FontAwesome";
 import CustomTextInput from "../designSystem/components/Input/CustomTextInput";
-import ChangeData from "../designSystem/layouts/ChangeData";
-import ResendCode from "../designSystem/layouts/ResendCode";
+import ChangeData from "../designSystem/containers/ChangeData";
+import ResendCode from "../designSystem/containers/ResendCode";
+import AppStack from "../routes/AppStack";
 
-const Review = () => {
+const Preview = () => {
   const { control } = useForm();
   const navigation = useNavigation<INavigation>();
   const [text, setText] = useState("");
@@ -32,6 +33,8 @@ const Review = () => {
         <View>
 
           {/* <ResendCode/> */}
+
+          
 
         </View>
 
@@ -63,6 +66,8 @@ const Review = () => {
           >
             <Text style={componentStyles.buttonText}>Forgot Password</Text>
           </TouchableOpacity>
+
+          <AppStack/>
 
           {/* <TouchableOpacity
             style={componentStyles.button}
@@ -142,4 +147,4 @@ const Review = () => {
   );
 };
 
-export default Review;
+export default Preview;

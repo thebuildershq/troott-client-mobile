@@ -5,12 +5,12 @@ import AuthRoot from "../../designSystem/layouts/AuthRoot";
 import customStyles from "../../assets/styles/custom";
 import { useNavigation } from "@react-navigation/native";
 import { INavigation } from "../../utils/type.util";
-import TermsAndConditions from "../../designSystem/layouts/TermsConditions";
+import TermsAndConditions from "../../designSystem/containers/TermsConditions";
 import { spacing } from "../../designSystem/theme/spacing";
 import Button from "../../designSystem/components/Buttons/Button";
 import OTPInput from "../../designSystem/components/Input/OTPInput";
-import ChangeData from "../../designSystem/layouts/ChangeData";
-import ResendCode from "../../designSystem/layouts/ResendCode";
+import ChangeData from "../../designSystem/containers/ChangeData";
+import ResendCode from "../../designSystem/containers/ResendCode";
 
 const VerificationScreen = () => {
   const navigation = useNavigation<INavigation>();
