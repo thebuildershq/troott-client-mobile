@@ -7,6 +7,8 @@ import { palette } from "../designSystem/theme/palette";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Explore from "../screens/tabs/Explore";
 import { fonts } from "../designSystem/theme/font";
+import { padding } from "../designSystem/theme/padding";
+import { sizing } from "../designSystem/theme/sizing";
 
 const Tab = createBottomTabNavigator();
 
@@ -15,16 +17,16 @@ function AppStack() {
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
-        tabBarActiveTintColor: palette.baseGreen,
         tabBarInactiveTintColor: palette.baseWhite,
+        tabBarActiveTintColor: palette.baseGreen,
         tabBarStyle: {
           backgroundColor: palette.baseGrey,
+          fontFamily: fonts.family.matterMedium,
           borderColor: "transparent",
           position: "absolute",
-          height: 100,
-          paddingTop: 10,
-          bottom: 0, 
-          fontFamily: fonts.family.matterMedium,
+          height: sizing.hundred,
+          paddingTop: padding.ten,
+          bottom: padding.none, 
         },
         tabBarLabelStyle: {
           marginTop: 5,
