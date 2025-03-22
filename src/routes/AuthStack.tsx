@@ -15,7 +15,7 @@ import { useNavigation } from "@react-navigation/native";
 import ForgotPassword from "../screens/auth/ForgotPassword";
 import ResetPassword from "../screens/auth/ResetPassword";
 import ForgotPasswordCode from "../screens/auth/ResetPasswordCode";
-import SelectMinisters from "../screens/preferences/SelectMinisters";
+import SelectMinisters from "../screens/preferences/ChooseMinisters";
 import ForgotPasswordEmail from "../screens/auth/ChangePassword";
 import Home from "../screens/tabs/Home";
 
@@ -54,7 +54,7 @@ const AuthStack = () => {
         name="Review"
         options={{
           headerShown: true,
-          headerTitle: "Review",
+          headerTitle: "Preview Screen",
         }}
         component={Review}
       />

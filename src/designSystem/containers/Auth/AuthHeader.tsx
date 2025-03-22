@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import React from "react";
-import customStyles from "../../assets/styles/custom";
-import componentStyles from "../../assets/styles/components";
+import customStyles from "../../../assets/styles/custom";
+import componentStyles from "../../../assets/styles/components";
 import { Container } from "lucide-react-native";
 
 const AuthHeader = () => {

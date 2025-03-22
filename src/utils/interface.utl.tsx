@@ -200,20 +200,18 @@ export interface ISlider {
 
 
 export type ISearchInput = {
-  title: string;
-  label: string;
-  placeholder: string;
-  control: Control<any, any>;
-  errors: any;
-  name: string;
-  backgroundColor: Palette;
-  containerStyle?: TextStyle;
-  isPassword?: boolean;
-  inputRight?: IconName;
-  inputRightOnPress?: (event: NativeSyntheticEvent<NativeTouchEvent>) => void;
-  inputLeft?: IconName;
-  inputLeftOnPress?: (event: NativeSyntheticEvent<NativeTouchEvent>) => void;
-};
+  value: string;
+  title?: string;
+  placeholder?: string;
+  errors?: any;
+  name?: string;
+  onChangeText: (val: string) => void;
+  onClear?: () => void;
+  backgroundColor?: string;
+  borderRadius?: number;
+  style?: object;
+}
+
 
 export interface IStorage {
   keepData(key: string, data: object | string): Promise<void>;
@@ -226,3 +224,7 @@ export interface IOAuth {
   onGooglePress: () => void;
   onApplePress: () => void;
 }
+
+
+
+

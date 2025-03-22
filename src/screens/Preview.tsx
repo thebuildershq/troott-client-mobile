@@ -7,12 +7,12 @@ import { useNavigation } from "@react-navigation/native";
 import { INavigation } from "../utils/type.util";
 import { palette } from "../designSystem/theme/palette";
 import { useForm } from "react-hook-form";
-import OAuth from "../designSystem/containers/OAuth";
-import AuthHeader from "../designSystem/containers/AuthHeader";
+import OAuth from "../designSystem/containers/Auth/OAuth";
+import AuthHeader from "../designSystem/containers/Auth/AuthHeader";
 import Icon from "react-native-vector-icons/FontAwesome";
 import CustomTextInput from "../designSystem/components/Input/CustomTextInput";
-import ChangeData from "../designSystem/containers/ChangeData";
-import ResendCode from "../designSystem/containers/ResendCode";
+import ChangeData from "../designSystem/containers/Auth/ChangeData";
+import ResendCode from "../designSystem/containers/Auth/ResendCode";
 import AppStack from "../routes/AppStack";
 
 const Preview = () => {
@@ -22,13 +22,13 @@ const Preview = () => {
 
   return (
     <SafeAreaView style={customStyles.container}>
-      <View>
+      {/* <View>
         <Text style={customStyles.text}>
           Review components and screens here
         </Text>
-      </View>
+      </View> */}
 
-      <View style={customStyles.mt20}>
+      <View >
 
         <View>
 
@@ -45,7 +45,7 @@ const Preview = () => {
           >
             <Text style={componentStyles.buttonText}>Welcome Screen</Text>
           </TouchableOpacity>
-
+{/* 
           <TouchableOpacity
             style={componentStyles.button}
             onPress={() => navigation.navigate("ForgotPasswordCode")}
@@ -65,7 +65,7 @@ const Preview = () => {
             onPress={() => navigation.navigate("ForgotPassword")}
           >
             <Text style={componentStyles.buttonText}>Forgot Password</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
 
           <AppStack/>
 

@@ -2,8 +2,11 @@ import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 import React, { useEffect, useCallback } from "react";
 import { NavigationContainer } from "@react-navigation/native";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AuthStack from "./AuthStack";
 import AppStack from "./AppStack";
+
+const queryClient = new QueryClient();
 
 SplashScreen.preventAutoHideAsync();
 
@@ -46,10 +49,12 @@ const Router = () => {
 
   return (
     <>
-      <NavigationContainer>
-        <AuthStack />
-        {/* <AppStack /> */}
-      </NavigationContainer>
+      <QueryClientProvider client={queryClient}>
+        <NavigationContainer>
+          <AuthStack />
+          <AppStack />
+        </NavigationContainer>
+      </QueryClientProvider>
     </>
   );
 };

@@ -28,9 +28,8 @@ export const axiosPrivate = axios.create({
     "X-Client-Type": "mobile",
     "X-Platform": Platform.OS,
     "X-App-Version": appVersion,
-    "User-Agent": `Troott/${getVersion()} (${
-      Platform.OS
-    } ${DeviceInfo.getSystemVersion()}; ${DeviceInfo.getModel()})`,
+    "User-Agent": `Troott/${getVersion()} (${Platform.OS} 
+      ${DeviceInfo.getSystemVersion()}; ${DeviceInfo.getModel()})`,
     "X-Locale": RNLocalize.getLocales()[0].languageTag || "en-US",
     "X-Timezone": moment.tz.guess(),
   },
