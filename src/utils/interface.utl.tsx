@@ -212,19 +212,45 @@ export type ISearchInput = {
   style?: object;
 }
 
-
 export interface IStorage {
-  keepData(key: string, data: object | string): Promise<void>;
-  fetchData(key: string): Promise<string | null>;
-  removeData(key: string): Promise<void>;
-  clearAll(): Promise<void>;
+  keepData: (key: string, data: object | string) => Promise<void>;
+  fetchData: (key: string) => Promise<string | null>;
+  getJSON: (key: string) => Promise<any | null>;
+  exists: (key: string) => Promise<boolean>;
+  updateData: (key: string, newData: object | string) => Promise<void>;
+  mergeData: (key: string, newData: object) => Promise<void>;
+  removeData: (key: string) => Promise<void>;
+  clearAll: () => Promise<void>;
+  multiKeep: (items: { key: string; data: object | string }[]) => Promise<void>;
+  multiFetch: (keys: string[]) => Promise<{ [key: string]: any | null }>;
+  multiRemove: (keys: string[]) => Promise<void>;
 }
+
 
 export interface IOAuth {
   onGooglePress: () => void;
   onApplePress: () => void;
 }
 
+export interface IApiError {
+  response?: {
+    status: number;
+    data?: {
+      message?: string;
+      detail?: string;
+      errors?: Array<string>;
+    };
+    headers?: Record<string, string>;
+  };
+  code?: string;
+  message?: string;
+}
 
 
-
+export interface IResult {
+  [x: string]: any;
+  error: boolean;
+  message: string;
+  code: number;
+  data: any;
+}
