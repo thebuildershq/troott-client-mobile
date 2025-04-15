@@ -45,9 +45,9 @@ axiosPrivate.interceptors.request.use(
     const deviceId = await DeviceInfo.getUniqueId();
     config.headers["X-Device-ID"] = deviceId;
 
-    const authToken = await AsyncStorage.getItem("authToken");
-    if (authToken) {
-      config.headers.authorization = `Bearer ${authToken}`;
+    const accessToken = await AsyncStorage.getItem("accessToken");
+    if (accessToken) {
+      config.headers.authorization = `Bearer ${accessToken}`;
     }
     return config;
   },
@@ -71,7 +71,7 @@ axiosPrivate.interceptors.response.use(
     const { status } = error?.response?.status;
 
     if (status === 403 || status === 401) {
-      await AsyncStorage.removeItem("authToken");
+      await AsyncStorage.removeItem("acessToken");
       console.log("Unauthorized. Redirecting to login.");
     }
 
