@@ -15,7 +15,7 @@ export const SCALE = SCREEN_WIDTH / 375; // 375 is used as a base width (e.g., i
  // Define constants
  const columns = column.three
  const imageSpacing = spacing.space10; // Gap between images
- const horizontalPadding = padding.large; // Padding on the left and right of the screen
+ const horizontalPadding = padding.xlarge; // Padding on the left and right of the screen
 
  // Calculate available width for images
  const availableWidth = SCREEN_WIDTH - (horizontalPadding * 2) - (imageSpacing * (columns - 1));

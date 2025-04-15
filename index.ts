@@ -10,9 +10,12 @@ import App from './App';
 // It also ensures that whether you load the app in Expo Go or in a native build,
 // the environment is set up appropriately
 
-const appName = "troott: sermon streaming app"
+// const appName = "main"
 
-AppRegistry.registerComponent(appName, () => App);
+//troott: sermon streaming app
+
+AppRegistry.registerComponent("main", () => App);
 registerRootComponent(App);
 
+// TrackPlayer.registerPlaybackService(() => require('./src/services/PlaybackService'));
 TrackPlayer.registerPlaybackService(() => PlaybackService);

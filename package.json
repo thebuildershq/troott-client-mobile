@@ -1,6 +1,19 @@
 {
   "name": "troott",
   "version": "1.0.0",
+  "private": true,
+  "description": "subscription based sermon-streaming service",
+  "homepage": "https://github.com/thebuildershq/troott-client-mobile#readme",
+  "bugs": {
+    "url": "https://github.com/thebuildershq/troott-client-mobile/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thebuildershq/troott-client-mobile.git"
+  },
+  "license": "ISC",
+  "author": "troott technologies",
+  "type": "commonjs",
   "main": "index.ts",
   "scripts": {
     "start": "expo start",
@@ -59,6 +72,5 @@
     "babel-preset-expo": "^12.0.9",
     "metro-react-native-babel-preset": "^0.77.0",
     "typescript": "^5.3.3"
-  },
-  "private": true
+  }
 }

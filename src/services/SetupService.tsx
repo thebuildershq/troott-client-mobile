@@ -3,10 +3,15 @@ import TrackPlayer, {
     Capability,
     RepeatMode,
   } from 'react-native-track-player';
-  
+
   export const DefaultRepeatMode = RepeatMode.Queue;
   export const DefaultAudioServiceBehaviour =
     AppKilledPlaybackBehavior.StopPlaybackAndRemoveNotification;
+    if (!Capability) {
+      throw new Error('Capability is not properly initialized. Check the import from react-native-track-player.');
+    }
+    console.log(Capability);
+
   
   const setupPlayer = async (
     options: Parameters<typeof TrackPlayer.setupPlayer>[0]
@@ -32,10 +37,10 @@ import TrackPlayer, {
     });
     await TrackPlayer.updateOptions({
       android: {
-        appKilledPlaybackBehavior: DefaultAudioServiceBehaviour,
+        appKilledPlaybackBehavior:  AppKilledPlaybackBehavior.StopPlaybackAndRemoveNotification,
       },
       // This flag is now deprecated. Please use the above to define playback mode.
-      // stoppingAppPausesPlayback: true,
+      stoppingAppPausesPlayback: true,
       capabilities: [
         Capability.Play,
         Capability.Pause,
@@ -52,3 +57,4 @@ import TrackPlayer, {
     });
     await TrackPlayer.setRepeatMode(DefaultRepeatMode);
   };
+  
