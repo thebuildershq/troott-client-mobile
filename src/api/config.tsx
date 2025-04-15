@@ -7,6 +7,19 @@ import * as RNLocalize from "react-native-localize";
 import moment from "moment-timezone";
 import Auth from "./auth";
 import User from "./user";
+import Bite from "./bite";
+import Catalog from "./catalog";
+import Email from "./email";
+import Feed from "./feed";
+import Invitation from "./invitation";
+import Library from "./library";
+import Notification from "./notification";
+import Playlist from "./playlist";
+import Preacher from "./preacher";
+import Search from "./search";
+import Sermon from "./sermon";
+import Staff from "./staff";
+import Subscription from "./subscription";
 
 
 let navigationRef = null;
@@ -37,6 +50,19 @@ export const axiosPrivate = axios.create({
 
 const api = {
   auth: new Auth(axiosPublic, axiosPrivate),
+  bite: new Bite(axiosPrivate),
+  catalog: new Catalog(axiosPrivate),
+  email: new Email(axiosPrivate),
+  feed: new Feed(axiosPrivate),
+  invitation: new Invitation(axiosPrivate),
+  library: new Library(axiosPrivate),
+  notification: new Notification(axiosPrivate),
+  playlist: new Playlist(axiosPrivate),
+  preacher: new Preacher(axiosPrivate),
+  search: new Search(axiosPrivate),
+  sermon: new Sermon(axiosPrivate),
+  staf: new Staff(axiosPrivate),
+  subsription: new Subscription(axiosPrivate),
   user: new User(axiosPrivate),
 };
 
@@ -79,29 +105,28 @@ axiosPrivate.interceptors.response.use(
   }
 );
 
-axiosPrivate.defaults.timeout = 10000; 
+axiosPrivate.defaults.timeout = 10000;
 
 axiosPrivate.interceptors.response.use(
-    (response) => response,
-    (error) => {
-        if (error.code === "ECONNABORTED") {
-            console.error("Request timeout:", error.message);
-            return Promise.reject({ message: "Request Timeout. Please try again." });
-        }
-        return Promise.reject(error);
+  (response) => response,
+  (error) => {
+    if (error.code === "ECONNABORTED") {
+      console.error("Request timeout:", error.message);
+      return Promise.reject({ message: "Request Timeout. Please try again." });
     }
+    return Promise.reject(error);
+  }
 );
 
 const requestController = new AbortController();
 
 axiosPrivate.interceptors.request.use((config) => {
-    config.signal = requestController.signal;
-    return config;
+  config.signal = requestController.signal;
+  return config;
 });
 
 export const cancelRequests = () => {
-    requestController.abort();
+  requestController.abort();
 };
-
 
 export default api;
