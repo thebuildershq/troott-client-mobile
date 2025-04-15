@@ -2,7 +2,7 @@ import React, { createContext, useReducer, useEffect, useContext } from "react";
 import TrackPlayer, { Event } from "react-native-track-player";
 import { TAction } from "../types/app.type";
 import { IAppState, IPlayerState } from "../utils/app.interface";
-import storage from "../utils/storage.util";
+import storage from "../utils/async-storage.util";
 
 // initialstate
 const initialState: IAppState = {
