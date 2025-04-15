@@ -6,7 +6,7 @@
 
 With troott, users can listen to old and new sermons from their favorite preachers, gain control over how they listen to sermons and messages, and share sermons with the people they love!
 
-## ✨ Introduction
+## Introduction
 
 Christian content lovers often struggle to:
 - Access messages from their favorite preachers.
@@ -26,27 +26,22 @@ We’re answering key questions to improve user experience:
 - How can we make sharing sermons as easy as sending a voice note?
 
 
-## 🛠 Technologies
+## Technologies
 
 - **React Native** (Bare or Expo)
 - **TypeScript**
 - **TanStack Query**
 - **React Navigation**
-- **eact-native-track-player**
-- **react-native-video**
+- **React-native-track-player**
+- **React-native-video**
 - **EAS (Expo Application Services)**
 - **AsyncStorage / MMKV**
 - **SVG animations**
 
 
-## 🚀 Getting Started
+## Getting Started
 
 To get it up and running on your local machine, follow the steps below:
-
-
-## 🚀 Getting Started
-
-Follow these steps to get the frontend running locally:
 
 1. **Clone the repo**  
    ```bash
@@ -95,7 +90,8 @@ Follow these steps to get the frontend running locally:
    ```
 
 
-## 📦 Branch Structure
+## Branch Structure
+
 
 | Branch               | Purpose                                                                 |
 |----------------------|-------------------------------------------------------------------------|
@@ -105,7 +101,8 @@ Follow these steps to get the frontend running locally:
 | `@username/feature-*`| Feature branches under a personal namespace.                            |
 | `@username/fix-*`    | Bugfix branches under a personal namespace.                             |
 
-## 🎯 Branch Naming Conventions
+### Example of Branch Naming Conventions
+
 
 | Type | Pattern | Example |
 |------|---------|---------|
@@ -113,19 +110,19 @@ Follow these steps to get the frontend running locally:
 | Bug Fix | `@username/fix-<short-desc>` | `@damolaoladipo/fix-email-validation-bug` |
 | Release | `release/v<semver>` | `release/v1.0.2` |
 
-> ✏️ Use lowercase and hyphens in branch names. Be concise and descriptive.
+> Use lowercase and hyphens in branch names. Be concise and descriptive.
 
 
-## 🔄 Workflow
+## Development Workflow
 
-### 1. 🔁 Clone the Repository
+### 1. Clone the Repository (if you haven't)
 
 ```bash
 git clone https://github.com/thebuildershq/troott-client-mobile.git
 cd troott-client-mobile
 ```
 
-### 2. 🌱 Create a Feature Branch
+### 2. Create a Feature Branch
 
 Open a feature branch from the staging branch.
 
@@ -135,17 +132,17 @@ git pull origin staging
 git checkout -b @username/feature-your-task-name
 ```
 
-✅ Tip: Use a descriptive and concise name for your branch. Follow this format:
+Tip: Use a descriptive and concise name for your branch. Follow this format:
 
 `@username/feature-short-description`
 
 Example: `@damolaoladipo/feature-user-invitation-endpoint`
 
-### 3. 🔨 Develop Your Feature
+### 3. Develop Your Feature
 
 Make your changes, test locally, and commit often using clear commit messages.
 
-### 4. 🔄 Sync with Latest Changes on staging
+### 4. Sync with Latest Changes on staging
 
 Before pushing or merging your feature, make sure your branch is up to date.
 
@@ -154,13 +151,13 @@ git fetch origin
 git rebase origin/staging
 ```
 
-### 5. ⬆️ Push to Remote
+### 5. Push to Remote
 
 ```bash
-git push origin @username/feature-your-task-name
+git push origin @username/feature-your-task
 ```
 
-### 6. 📥 Merge into staging (after PR approval)
+### 6. Merge into staging (after PR approval)
 
 ```bash
 git checkout staging
@@ -168,10 +165,10 @@ git merge @username/feature-your-task-name
 git push origin staging
 ```
 
-📌 Your pull request (PR) should target staging — not master.  
+📌 Your pull request (PR) should target `staging` — not master.  
 Reference the issue number in the PR description (e.g., Closes #502).
 
-### 7. 🚧 Create a Release Branch
+### 7. Create a Release Branch
 
 When ready for deployment, create a release branch from staging.
 
@@ -180,9 +177,9 @@ git checkout -b release/v1.0.2
 git push origin release/v1.0.2
 ```
 
-🔍 Final QA and bug-fixing happen on this release/* branch before production deployment.
+Final QA and bug-fixing happen on this release/* branch before production deployment.
 
-### 8. 🚀 Merge Release into master and staging
+### 8. Merge Release into master and staging
 
 After final QA on the release branch, merge it into both master and staging to complete the release.
 
@@ -198,24 +195,23 @@ git merge release/v1.0.2
 git push origin staging
 ```
 
-### ✅ Creating an Issue
+### Creating an Issue
 
 If you discover a bug or have a suggestion, raise an issue via the GitHub Issues tab (if you have permission), or notify your team lead for triage and assignment.
 
----
 
-## 🚀 Useful Commands
+## Useful Commands
 
-| Command        | Description                                |
-|----------------|--------------------------------------------|
-| `npm run dev`  | Starts the app in development mode.        |
-| `npm start`    | Starts the app in production mode.         |
 
----
+| Command            | Description                                   |
+|--------------------|-----------------------------------------------|
+| `npm run dev`      | Starts the app in development mode.           |
+| `npm start`        | Starts the app in production mode.            |
+| `npm run build`    | Build app for production (EAS or manually)    |
 
-## 🔐 Pull Request Notes
+## Pull Request Notes
 
-- Always create PRs against the staging branch.
-- Reference your issue with keywords like Closes #123.
-- Include context and screenshots when necessary.
-- Assign reviewers and request feedback.
+- PRs should target the `staging` branch.
+- Reference issues using `Closes #issue-number`.
+- Add context and screenshots/logs when helpful.
+- Request reviewers before merging.
