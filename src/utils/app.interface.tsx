@@ -60,3 +60,27 @@ export interface IUi {
   isLoading: boolean;
   error: string | null;
 }
+
+
+
+// initialstate
+const initialState: IAppState = {
+  auth: {
+    isAuthenticated: false,
+    user: { name: null, email: null },
+    token: null,
+  },
+  player: {
+    isPlaying: false,
+    currentTrack: { title: null, artist: null, artwork: null },
+    position: 0,
+    duration: 0,
+    playlist: [],
+  },
+  media: { favorites: [], downloads: [], searchHistory: [] },
+  notifications: { alerts: [], pushToken: null },
+  subscription: { plan: null, paymentStatus: null },
+  ui: { isLoading: false, error: null },
+};
+
+export default initialState;
