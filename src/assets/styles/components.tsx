@@ -272,6 +272,41 @@ const componentStyles = StyleSheet.create({
     flex: 1, 
     marginHorizontal: 5, 
   },
+
+
+  //Error Boundary Components
+  econtainer: {
+    backgroundColor: '#fafafa',
+    flex: 1,
+    justifyContent: 'center',
+  },
+  econtent: {
+    marginHorizontal: 16,
+  },
+  etitle: {
+    fontSize: 48,
+    fontWeight: '300',
+    paddingBottom: 16,
+    color: '#000',
+  },
+  esubtitle: {
+    fontSize: 32,
+    fontWeight: '800',
+    color: '#000',
+  },
+  eerror: {
+    paddingVertical: 16,
+  },
+  ebutton: {
+    backgroundColor: '#2196f3',
+    borderRadius: 50,
+    padding: 16,
+  },
+  ebuttonText: {
+    color: '#fff',
+    fontWeight: '600',
+    textAlign: 'center',
+  },
 });
 
 export default componentStyles;
