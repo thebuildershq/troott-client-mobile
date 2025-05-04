@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Platform } from "react-native";
+import { Config } from "react-native-config"
 import ENV from "@env";
 import DeviceInfo, { getVersion } from "react-native-device-info";
 import * as RNLocalize from "react-native-localize";
@@ -33,7 +34,7 @@ export const setNavigationRef = (ref: any): void => {
   navigationRef = ref;
 };
 
-const BaseURL: string = ENV.TROOTT_API_URL_LOCAL;
+const BaseURL: string = Config.TROOTT_API_URL_LOCAL as string;
 const appVersion = getVersion();
 
 export const axiosPublic = axios.create({
