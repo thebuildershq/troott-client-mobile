@@ -3,7 +3,6 @@ import { Text, TouchableOpacity, View, StyleSheet, Animated, Easing } from "reac
 import Feather from "react-native-vector-icons/Feather";
 import { spacing } from "../../theme/spacing";
 import { palette } from "../../theme/palette";
-import { fonts } from "../../theme/font";
 import { IButton } from "../../../utils/interface.utl";
 import componentStyles from "../../../assets/styles/components";
 
