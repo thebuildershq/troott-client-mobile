@@ -1,5 +1,5 @@
-import { TouchableOpacity } from "react-native";
 import React from "react";
+import { TouchableOpacity } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { palette } from "../designSystem/theme/palette";
 import { fonts } from "../designSystem/theme/font";

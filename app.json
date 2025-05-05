@@ -7,6 +7,10 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
+    "experiments": {
+      "newArchitecture": false,
+      "turboModules": true
+    },
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
@@ -29,8 +33,10 @@
       "favicon": "./assets/favicon.png"
     },
     "extra": {
+      "TROOTT_API_URL_LOCAL": "process.env.TROOTT_API_URL_LOCAL",
       "eas": {
         "projectId": "48464c89-4d39-460d-b9b3-f451321cce9c"
+        
       }
     }
   }

@@ -1,89 +1,99 @@
-import { Notifications } from "react-native-notifications";
-import messaging from "@react-native-firebase/messaging";
+import * as Notifications from "expo-notifications";
+import * as Device from "expo-device";
 import { Platform } from "react-native";
 
 // ✅ 1. Request Permissions & Get Push Token
 export const getPushToken = async (): Promise<string | null> => {
   try {
-    const authStatus = await messaging().requestPermission();
-    const enabled =
-      authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
-      authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+    if (!Device.isDevice) {
+      console.warn("Push notifications only work on physical devices.");
+      return null;
+    }
 
-    if (!enabled) {
+    const { status: existingStatus } = await Notifications.getPermissionsAsync();
+    let finalStatus = existingStatus;
+
+    if (existingStatus !== "granted") {
+      const { status } = await Notifications.requestPermissionsAsync();
+      finalStatus = status;
+    }
+
+    if (finalStatus !== "granted") {
       console.warn("Push notifications permission not granted.");
       return null;
     }
 
-    const token = await messaging().getToken();
-    console.log("Push Notification Token:", token);
+    const tokenData = await Notifications.getExpoPushTokenAsync();
+    const token = tokenData.data;
+    console.log("Expo Push Token:", token);
     return token;
   } catch (error) {
-    console.error("Error getting push notification token:", error);
+    console.error("Error getting push token:", error);
     return null;
   }
 };
 
-// ✅ 2. Listen for Notifications (Foreground, Background, and Quit State)
+// ✅ 2. Listen for Notifications (Foreground & Tap Events)
 export const setupNotificationListeners = () => {
-  // Foreground Notification Handler
-  Notifications.events().registerNotificationReceivedForeground((notification, completion) => {
-    console.log("Foreground Notification Received:", notification);
-    completion({ alert: true, sound: true, badge: false });
+  // Foreground listener
+  Notifications.addNotificationReceivedListener((notification) => {
+    console.log("Foreground notification received:", notification);
   });
 
-  // Notification Opened (When tapped in background)
-  Notifications.events().registerNotificationOpened((notification, completion) => {
-    console.log("Notification Opened:", notification);
-    completion();
+  // When the user taps the notification
+  Notifications.addNotificationResponseReceivedListener((response) => {
+    console.log("Notification tapped:", response);
   });
 
-  // Background Notification Handler (for iOS)
-  Notifications.registerRemoteNotifications();
-  messaging().setBackgroundMessageHandler(async (remoteMessage) => {
-    console.log("Background Message Received:", remoteMessage);
-  });
-
-  console.log("Notification listeners set up.");
+  console.log("Expo notification listeners set up.");
 };
 
-// ✅ 3. Schedule a Local Notification
-export const scheduleLocalNotification = (title: string, body: string, delay: number = 5) => {
-  Notifications.postLocalNotification({
-    title,
-    body,
-    sound: "default",
-    category: "SCHEDULED",
-    fireDate: new Date().getTime() + delay * 1000, // Schedule after delay (seconds)
-  });
+// ✅ 3. Schedule Local Notification
+// export const scheduleLocalNotification = async (
+//   title: string,
+//   body: string,
+//   delay: number = 5
+// ) => {
+//   await Notifications.scheduleNotificationAsync({
+//     content: {
+//       title,
+//       body,
+//       sound: true,
+//     },
+//     trigger: {
+//       seconds: delay,
+//       repeats: false,
+//       type: "timeInterval", // 👈 required for both platforms
+//     },
+//   });
 
-  console.log(`Local notification scheduled in ${delay} seconds.`);
-};
+//   console.log(`Local notification scheduled in ${delay} seconds.`);
+// };
 
 // ✅ 4. Cancel All Scheduled Notifications
-export const cancelAllNotifications = () => {
-  Notifications.cancelLocalNotification("*"); 
+export const cancelAllNotifications = async () => {
+  await Notifications.cancelAllScheduledNotificationsAsync();
   console.log("All scheduled notifications canceled.");
 };
 
-// ✅ 5. Set App Badge Number
-export const setBadgeCount = (count: number) => {
+// ✅ 5 & 6. Set / Clear App Badge Number
+export const setBadgeCount = async (count: number) => {
   if (Platform.OS === "ios") {
-    Notifications.ios.setBadgeCount(count);
+    await Notifications.setBadgeCountAsync(count);
   }
 };
 
-// ✅ 6. Clear Badge Count
-export const clearBadgeCount = () => {
+export const clearBadgeCount = async () => {
   if (Platform.OS === "ios") {
-    Notifications.ios.setBadgeCount(0);
+    await Notifications.setBadgeCountAsync(0);
   }
 };
 
-// ✅ 7. Handle App Termination
+// ✅ 7. Handle App Opened from Notification (Optional Manual Check)
 export const handleNotificationAppLaunch = async () => {
-  const initialNotification = await messaging().getInitialNotification();
-  if (initialNotification) {
-    console.log("App opened from a notification:", initialNotification);
+  const response = await Notifications.getLastNotificationResponseAsync();
+  if (response) {
+    console.log("App launched from notification:", response);
   }
 };
+

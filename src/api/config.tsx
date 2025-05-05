@@ -1,8 +1,7 @@
 import axios from "axios";
 import { Platform } from "react-native";
-import { Config } from "react-native-config"
-import ENV from "@env";
-import DeviceInfo, { getVersion } from "react-native-device-info";
+import Constants from "expo-constants";
+import * as Device from "expo-device";
 import * as RNLocalize from "react-native-localize";
 import moment from "moment-timezone";
 import storage from "../utils/storage.util";
@@ -34,8 +33,8 @@ export const setNavigationRef = (ref: any): void => {
   navigationRef = ref;
 };
 
-const BaseURL: string = Config.TROOTT_API_URL_LOCAL as string;
-const appVersion = getVersion();
+const BaseURL: string = Constants.expoConfig?.extra?.TROOTT_API_URL_LOCAL as string;
+const appVersion: string = Constants.expoConfig?.version as string;
 
 export const axiosPublic = axios.create({
   baseURL: BaseURL,
@@ -44,8 +43,8 @@ export const axiosPublic = axios.create({
     "X-Client-Type": "mobile",
     "X-Platform": Platform.OS,
     "X-App-Version": appVersion,
-    "User-Agent": `Troott/${getVersion()} (${Platform.OS} 
-      ${DeviceInfo.getSystemVersion()}; ${DeviceInfo.getModel()})`,
+    "User-Agent": `Troott/${appVersion} (${Platform.OS} 
+      ${Device.osVersion}; ${Device.modelName})`,
     "X-Locale": RNLocalize.getLocales()[0].languageTag || "en-US",
     "X-Timezone": moment.tz.guess(),
   },
@@ -58,8 +57,8 @@ export const axiosPrivate = axios.create({
     "X-Client-Type": "mobile",
     "X-Platform": Platform.OS,
     "X-App-Version": appVersion,
-    "User-Agent": `Troott/${getVersion()} (${Platform.OS} 
-      ${DeviceInfo.getSystemVersion()}; ${DeviceInfo.getModel()})`,
+    "User-Agent": `Troott/${appVersion} (${Platform.OS} 
+      ${Device.osVersion}; ${Device.modelName})`,
     "X-Locale": RNLocalize.getLocales()[0].languageTag || "en-US",
     "X-Timezone": moment.tz.guess(),
   },
@@ -110,7 +109,7 @@ const api = {
  */
 axiosPrivate.interceptors.request.use(
   async function (config) {
-    const deviceId = await DeviceInfo.getUniqueId();
+    const deviceId = await Device.modelId;
     config.headers["X-Device-ID"] = deviceId;
 
     const accessToken = await storage.fetchData("accessToken");
