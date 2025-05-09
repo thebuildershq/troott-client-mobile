@@ -1,21 +1,29 @@
 {
-    "cli": {
-      "version": ">= 15.0.10",
-      "appVersionSource": "remote"
+  "cli": {
+    "version": ">= 15.0.10",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
     },
-    "build": {
-      "development": {
-        "developmentClient": true,
-        "distribution": "internal"
-      },
-      "preview": {
-        "distribution": "internal"
-      },
-      "production": {
-        "autoIncrement": true
+    "preview": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk",
+        "experimental": {
+          "newGradleProperties": {
+            "expo.newArch.enabled": "true"
+          }
+        }
       }
     },
-    "submit": {
-      "production": {}
+    "production": {
+      "autoIncrement": true
     }
+  },
+  "submit": {
+    "production": {}
   }
+}

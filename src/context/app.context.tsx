@@ -1,9 +1,10 @@
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useEffect, useReducer, useState } from "react";
 import TrackPlayer, { Event } from "react-native-track-player";
 import initialState, { IAppState } from "../utils/app.interface";
 import { TAction } from "./app.actions";
 import appReducer from "./app.reducer";
 import storage from "../utils/storage.util";
+import { setupTrackPlayer } from "../services/SetupService";
 
 
 // Create Context
@@ -14,8 +15,22 @@ const AppContext = createContext<{
   
   export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [state, dispatch] = useReducer(appReducer, initialState);
-  
+    
+    const [isPlayerReady, setIsPlayerReady] = useState(false);
+
     useEffect(() => {
+      const setup = async () => {
+        const isSetup = await setupTrackPlayer();
+        dispatch({ type: "SET_PLAYER_READY", payload: isSetup });
+      };
+      setup();
+    }, []);
+  
+
+    useEffect(() => {
+
+      if (!state.isPlayerReady) return;
+
       const listeners = [
         TrackPlayer.addEventListener(Event.RemotePlay, () => {
           dispatch({ type: "PLAY" });

@@ -1,45 +1,67 @@
-import TrackPlayer, { Event } from 'react-native-track-player';
+import TrackPlayer, { Event, State } from 'react-native-track-player';
 
-export async function PlaybackService() {
-  TrackPlayer.addEventListener(Event.RemotePause, () => {
-    console.log('Event.RemotePause');
-    TrackPlayer.pause();
-  });
-
-  TrackPlayer.addEventListener(Event.RemotePlay, () => {
+export async function TrackPlayerService() {
+  // Remote Controls
+  TrackPlayer.addEventListener(Event.RemotePlay, async () => {
     console.log('Event.RemotePlay');
-    TrackPlayer.play();
+    const { state } = await TrackPlayer.getPlaybackState();
+    if (state !== State.Playing) {
+      await TrackPlayer.play();
+    }
   });
 
-  TrackPlayer.addEventListener(Event.RemoteNext, () => {
+  TrackPlayer.addEventListener(Event.RemotePause, async () => {
+    console.log('Event.RemotePause');
+    const { state } = await TrackPlayer.getPlaybackState();
+    if (state === State.Playing) {
+      await TrackPlayer.pause();
+    }
+  });
+
+  TrackPlayer.addEventListener(Event.RemoteNext, async () => {
     console.log('Event.RemoteNext');
-    TrackPlayer.skipToNext();
+    try {
+      await TrackPlayer.skipToNext();
+    } catch (e) {
+      console.warn('No next track', e);
+    }
   });
 
-  TrackPlayer.addEventListener(Event.RemotePrevious, () => {
+  TrackPlayer.addEventListener(Event.RemotePrevious, async () => {
     console.log('Event.RemotePrevious');
-    TrackPlayer.skipToPrevious();
+    try {
+      await TrackPlayer.skipToPrevious();
+    } catch (e) {
+      console.warn('No previous track', e);
+    }
+  });
+
+  TrackPlayer.addEventListener(Event.RemoteStop, async () => {
+    console.log('Event.RemoteStop');
+    await TrackPlayer.stop();
   });
 
   TrackPlayer.addEventListener(Event.RemoteJumpForward, async (event) => {
     console.log('Event.RemoteJumpForward', event);
-    TrackPlayer.seekBy(event.interval);
+    await TrackPlayer.seekBy(event.interval);
   });
 
   TrackPlayer.addEventListener(Event.RemoteJumpBackward, async (event) => {
     console.log('Event.RemoteJumpBackward', event);
-    TrackPlayer.seekBy(-event.interval);
+    await TrackPlayer.seekBy(-event.interval);
   });
 
-  TrackPlayer.addEventListener(Event.RemoteSeek, (event) => {
+  TrackPlayer.addEventListener(Event.RemoteSeek, async (event) => {
     console.log('Event.RemoteSeek', event);
-    TrackPlayer.seekTo(event.position);
+    await TrackPlayer.seekTo(event.position);
   });
 
   TrackPlayer.addEventListener(Event.RemoteDuck, async (event) => {
     console.log('Event.RemoteDuck', event);
+    // Optional: pause or duck volume here depending on your app logic
   });
 
+  // Playback Events
   TrackPlayer.addEventListener(Event.PlaybackQueueEnded, (event) => {
     console.log('Event.PlaybackQueueEnded', event);
   });
@@ -60,10 +82,7 @@ export async function PlaybackService() {
     console.log('Event.PlaybackState', event);
   });
 
-  TrackPlayer.addEventListener(Event.PlaybackMetadataReceived, (event) => {
-    console.log('[Deprecated] Event.PlaybackMetadataReceived', event);
-  });
-
+  // Metadata Events
   TrackPlayer.addEventListener(Event.MetadataChapterReceived, (event) => {
     console.log('Event.MetadataChapterReceived', event);
   });
@@ -76,19 +95,18 @@ export async function PlaybackService() {
     console.log('Event.MetadataCommonReceived', event);
   });
 
-  TrackPlayer.addEventListener(Event.PlaybackProgressUpdated, (event) => {
-    console.log('Event.PlaybackProgressUpdated', event);
-  });
-
-  TrackPlayer.addEventListener(
-    Event.PlaybackMetadataReceived,
-    async ({ title, artist }) => {
-      const activeTrack = await TrackPlayer.getActiveTrack();
-      TrackPlayer.updateNowPlayingMetadata({
-        artist: [title, artist].filter(Boolean).join(' - '),
-        title: activeTrack?.title,
-        artwork: activeTrack?.artwork,
+  // Custom: Update Now Playing Info when Metadata Received
+  TrackPlayer.addEventListener(Event.MetadataCommonReceived, async (event) => {
+    console.log('Event.MetadataCommonReceived', event);
+  
+    const activeTrack = await TrackPlayer.getActiveTrack();
+    if (activeTrack) {
+      await TrackPlayer.updateNowPlayingMetadata({
+        title: activeTrack.title,
+        artist: event.metadata.artist || activeTrack.artist,
+        artwork: activeTrack.artwork,
       });
     }
-  );
+  });
+  
 }

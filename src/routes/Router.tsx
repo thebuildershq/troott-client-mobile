@@ -10,6 +10,8 @@ import AuthStack from "./AuthStack";
 import AppStack from "./AppStack";
 import { setNavigationRef } from "../api/config";
 import { matterFonts } from "../utils/constant.util";
+import { AppProvider } from "../context/app.context";
+
 
 const queryClient = new QueryClient();
 
@@ -43,15 +45,19 @@ const Router = () => {
     setNavigationRef(navigationRef);
   }, [navigationRef]);
 
+
   return (
     <>
+    <AppProvider>
       <QueryClientProvider client={queryClient}>
         <NavigationContainer ref={navigationRef}>
           <AuthStack />
           <AppStack />
         </NavigationContainer>
       </QueryClientProvider>
+      </AppProvider>
     </>
+    
   );
 };
 

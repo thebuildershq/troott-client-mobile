@@ -5,10 +5,12 @@ export interface IAppState {
   notifications: INotifications
   subscription: ISubscription
   ui: IUi
+  isPlayerReady: boolean;
 }
 
 export interface IPlayerState {
   isPlaying: boolean;
+  isSetup: boolean;
   currentTrack: {
     title: string | null;
     artist: string | null;
@@ -61,8 +63,6 @@ export interface IUi {
   error: string | null;
 }
 
-
-
 // initialstate
 const initialState: IAppState = {
   auth: {
@@ -71,6 +71,7 @@ const initialState: IAppState = {
     token: null,
   },
   player: {
+    isSetup: false,
     isPlaying: false,
     currentTrack: { title: null, artist: null, artwork: null },
     position: 0,
@@ -81,6 +82,7 @@ const initialState: IAppState = {
   notifications: { alerts: [], pushToken: null },
   subscription: { plan: null, paymentStatus: null },
   ui: { isLoading: false, error: null },
+  isPlayerReady: false
 };
 
 export default initialState;

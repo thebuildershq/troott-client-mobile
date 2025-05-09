@@ -22,6 +22,27 @@ dist/
 web-build/
 expo-env.d.ts
 /build
+/android
+/ios
+/ios-build
+/ios-build-debug
+
+# .easignore
+node_modules
+.git
+*.log
+*.lock
+*.DS_Store
+*.apk
+*.aab
+web-build
+dist
+build
+coverage
+android/.gradle
+android/app/build
+ios/build
+
 
 # Native
 *.orig.*

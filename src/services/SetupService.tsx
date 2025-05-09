@@ -1,45 +1,50 @@
 import TrackPlayer, {
-    AppKilledPlaybackBehavior,
-    Capability,
-    RepeatMode,
-  } from 'react-native-track-player';
+  Capability,
+  AppKilledPlaybackBehavior,
+  RepeatMode,
+} from 'react-native-track-player';
 
-  export const DefaultRepeatMode = RepeatMode.Queue;
-  export const DefaultAudioServiceBehaviour =
-    AppKilledPlaybackBehavior.StopPlaybackAndRemoveNotification;
+
+export const setupTrackPlayer = async (): Promise<boolean> => {
+  try {
+
     if (!Capability) {
-      throw new Error('Capability is not properly initialized. Check the import from react-native-track-player.');
+      console.error("TrackPlayer.Capability is null or undefined. Check native linking and build cache.");
+      // Throw an error or return false to indicate setup failure
+      // throw new Error("TrackPlayer.Capability is not available.");
+      return false; // Or handle the error as appropriate for your app
     }
-    console.log(Capability);
 
-  
-  const setupPlayer = async (
-    options: Parameters<typeof TrackPlayer.setupPlayer>[0]
-  ) => {
-    const setup = async () => {
-      try {
-        await TrackPlayer.setupPlayer(options);
-      } catch (error) {
-        return (error as Error & { code?: string }).code;
+    let isSetup = false;
+
+    // Try to check if player is already active
+    try {
+      await TrackPlayer.getActiveTrackIndex();
+      isSetup = true;
+    } catch {
+      const setup = async (): Promise<boolean | string> => {
+        try {
+          await TrackPlayer.setupPlayer({ autoHandleInterruptions: true });
+          return true;
+        } catch (error) {
+          return (error as Error & { code?: string }).code || false;
+        }
+      };
+
+      // Retry if specific Android error is encountered
+      while ((await setup()) === 'android_cannot_setup_player_in_background') {
+        await new Promise((resolve) => setTimeout(resolve, 1));
       }
-    };
-    while ((await setup()) === 'android_cannot_setup_player_in_background') {
-      // A timeout will mostly only execute when the app is in the foreground,
-      // and even if we were in the background still, it will reject the promise
-      // and we'll try again:
-      await new Promise<void>((resolve) => setTimeout(resolve, 1));
+
+      isSetup = true;
     }
-  };
-  
-  export const SetupService = async () => {
-    await setupPlayer({
-      autoHandleInterruptions: true,
-    });
+
+    // Apply track player options
     await TrackPlayer.updateOptions({
       android: {
-        appKilledPlaybackBehavior:  AppKilledPlaybackBehavior.StopPlaybackAndRemoveNotification,
+        appKilledPlaybackBehavior:
+          AppKilledPlaybackBehavior.StopPlaybackAndRemoveNotification,
       },
-      // This flag is now deprecated. Please use the above to define playback mode.
       stoppingAppPausesPlayback: true,
       capabilities: [
         Capability.Play,
@@ -47,14 +52,29 @@ import TrackPlayer, {
         Capability.SkipToNext,
         Capability.SkipToPrevious,
         Capability.SeekTo,
+        Capability.Stop,
       ],
       compactCapabilities: [
         Capability.Play,
         Capability.Pause,
         Capability.SkipToNext,
       ],
+      notificationCapabilities: [
+        Capability.Play,
+        Capability.Pause,
+        Capability.SkipToNext,
+        Capability.SkipToPrevious,
+        Capability.SeekTo,
+      ],
       progressUpdateEventInterval: 2,
     });
-    await TrackPlayer.setRepeatMode(DefaultRepeatMode);
-  };
-  
+
+    await TrackPlayer.setRepeatMode(RepeatMode.Queue);
+    console.log('TrackPlayer successfully initialized');
+
+    return isSetup;
+  } catch (error) {
+    console.error('Error setting up TrackPlayer:', error);
+    return false;
+  }
+};

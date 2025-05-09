@@ -1,8 +1,9 @@
 import { AppRegistry } from 'react-native';
 import { registerRootComponent } from 'expo';
 import TrackPlayer from 'react-native-track-player';
-import { PlaybackService } from './src/services/PlaybackService';
+import { TrackPlayerService } from './src/services/PlaybackService';
 import App from './App';
+
 
 
 
@@ -14,8 +15,8 @@ import App from './App';
 
 //troott: sermon streaming app
 
+// TrackPlayer.registerPlaybackService(() => require('./src/services/PlaybackService'));
 AppRegistry.registerComponent("main", () => App);
 registerRootComponent(App);
 
-// TrackPlayer.registerPlaybackService(() => require('./src/services/PlaybackService'));
-TrackPlayer.registerPlaybackService(() => PlaybackService);
+TrackPlayer.registerPlaybackService(() => TrackPlayerService);

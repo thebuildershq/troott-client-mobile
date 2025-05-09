@@ -8,6 +8,7 @@ export type TAction =
  | { type: "SET_AUTH_FROM_STORAGE"; payload: IAppState["auth"] }
 
  // Player Actions
+ | { type: "SET_PLAYER_READY", payload: boolean}
  | { type: "PLAY" }
  | { type: "PAUSE" }
  | { type: "SET_TRACK"; payload: IPlayerState["currentTrack"] }

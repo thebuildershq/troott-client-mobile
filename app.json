@@ -5,19 +5,12 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "newArchEnabled": true,
-    "experiments": {
-      "newArchitecture": false,
-      "turboModules": true
-    },
+    "userInterfaceStyle": "automatic",
+    "entryPoint": "./index.ts",
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
-    },
-    "expo": {
-      "entryPoint": "./index.ts"
     },
     "ios": {
       "supportsTablet": true
@@ -27,7 +20,15 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.dmlscript.troottclient"
+      "package": "com.dmlscript.troottclient",
+      "plugins": [
+        [
+          "expo-edge-to-edge",
+          {
+            "enabled": true
+          }
+        ]
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -36,7 +37,6 @@
       "TROOTT_API_URL_LOCAL": "process.env.TROOTT_API_URL_LOCAL",
       "eas": {
         "projectId": "48464c89-4d39-460d-b9b3-f451321cce9c"
-        
       }
     }
   }
