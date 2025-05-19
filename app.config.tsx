@@ -5,8 +5,8 @@ export default {
     name: "troott",
     slug: "troott",
     version: "1.0.0",
-    sdkVersion: "53.0.0",
-    platforms: ["android"],
+    sdkVersion: "^52.0.46",
+    platforms: ["android","ios"],
     android: {
       package: "com.troott.app",
       versionCode: 1,

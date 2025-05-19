@@ -5,15 +5,15 @@ import AuthRoot from "../../designSystem/layouts/AuthRoot";
 import customStyles from "../../assets/styles/custom";
 import AuthHeader from "../../designSystem/containers/Auth/AuthHeader";
 import OAuth from "../../designSystem/containers/Auth/OAuth";
-import CustomTextInput from "../../designSystem/components/Input/TextInput";
+import CustomTextInput from "../../components/Input/TextInput";
 import { palette } from "../../designSystem/theme/palette";
 import Icon from "react-native-vector-icons/FontAwesome";
-import Button from "../../designSystem/components/Buttons/Button";
+import Button from "../../components/Buttons/Button";
 import { useNavigation } from "@react-navigation/native";
 import { INavigation } from "../../utils/type.util";
 import { spacing } from "../../designSystem/theme/spacing";
 import ResetSubtext from "../../designSystem/containers/Auth/ResetSubtext";
-import PasswordInput from "../../designSystem/components/Input/PasspwordInput";
+import PasswordInput from "../../components/Input/PasspwordInput";
 
 const ResetPassword = () => {
   const navigation = useNavigation<INavigation>();

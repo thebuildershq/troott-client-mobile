@@ -16,7 +16,7 @@ import App from './App';
 //troott: sermon streaming app
 
 // TrackPlayer.registerPlaybackService(() => require('./src/services/PlaybackService'));
-AppRegistry.registerComponent("main", () => App);
-registerRootComponent(App);
+// AppRegistry.registerComponent("main", () => App);
+// registerRootComponent(App);
 
 TrackPlayer.registerPlaybackService(() => TrackPlayerService);

@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import OAuth from "../designSystem/containers/Auth/OAuth";
 import AuthHeader from "../designSystem/containers/Auth/AuthHeader";
 import Icon from "react-native-vector-icons/FontAwesome";
-import CustomTextInput from "../designSystem/components/Input/CustomTextInput";
+import CustomTextInput from "../components/Input/CustomTextInput";
 import ChangeData from "../designSystem/containers/Auth/ChangeData";
 import ResendCode from "../designSystem/containers/Auth/ResendCode";
 import AppStack from "../routes/AppStack";

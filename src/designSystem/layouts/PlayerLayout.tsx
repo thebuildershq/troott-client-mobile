@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { View } from "react-native";
-import BottomNavigation from "../components/BottomNavigation";
-import MiniPlayer from "../components/MiniPlayer";
+import BottomNavigation from "../../components/BottomNavigation";
+import MiniPlayer from "../../components/MiniPlayer";
 
 function PlayerLayout({ children }: { children: ReactNode }) {
   return (

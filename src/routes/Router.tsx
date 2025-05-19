@@ -52,7 +52,7 @@ const Router = () => {
       <QueryClientProvider client={queryClient}>
         <NavigationContainer ref={navigationRef}>
           <AuthStack />
-          <AppStack />
+          {/* <AppStack /> */}
         </NavigationContainer>
       </QueryClientProvider>
       </AppProvider>

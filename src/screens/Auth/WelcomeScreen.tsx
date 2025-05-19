@@ -1,16 +1,16 @@
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Dimensions, Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import React, { useState } from "react";
-import { IWelcomeScreen } from "../../utils/interface.utl";
 import customStyles from "../../assets/styles/custom";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { IMAGES } from "../../assets/images/images";
-import CustomImage from "../../designSystem/components/Images/Images";
-import Button from "../../designSystem/components/Buttons/Button";
-import { spacing } from "../../designSystem/theme/spacing";
-import { palette } from "../../designSystem/theme/palette";
+import CustomImage from "../../components/Images/Images";
+import {router} from 'expo-router'
+import Button from "@/components/ui/button";
+import { theme } from "@/constants/theme";
 
-const WelcomeScreen = (props: IWelcomeScreen) => {
-  const { navigation } = props;
+const WelcomeScreen = () => {
+ const navigation = {
+  navigate :(param:string)=>{}
+ }
 
   const [isCreatingAccount, setIsCreatingAccount] = useState(false);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
@@ -18,7 +18,7 @@ const WelcomeScreen = (props: IWelcomeScreen) => {
   const handleCreateAccount = () => {
     setIsCreatingAccount(true);
     setTimeout(() => {
-      navigation.navigate("Email");
+      router.push('/auth')
       setIsCreatingAccount(false);
     }, 2000);
   };
@@ -26,17 +26,20 @@ const WelcomeScreen = (props: IWelcomeScreen) => {
   const handleLogin = () => {
     setIsLoggingIn(true);
     setTimeout(() => {
-      navigation.navigate("Login");
+      router.push('/auth/login');
       setIsLoggingIn(false);
     }, 2000);
   };
 
+const SCREEN_WIDTH = Dimensions.get('window').width
+
   return (
     <>
-      <SafeAreaView style={customStyles.WelcomeScreenContainer}>
+      <View style={[customStyles.WelcomeScreenContainer,{
+      }]}>
         <ScrollView>
           <View style={customStyles.WelcomeScreenView}>
-            <Image source={IMAGES.ministersGroup} />
+            <Image source={IMAGES.ministersGroup} style={{width:theme.sizes.screen.width,height:theme.sizes.screen.height*.6}} />
             <CustomImage
               source={IMAGES.png}
               style={customStyles.WelcomeScreenLogo}
@@ -47,30 +50,13 @@ const WelcomeScreen = (props: IWelcomeScreen) => {
             </Text>
           </View>
 
-          <View style={customStyles.mt30}>
-            <Button
-              title="Create Account"
-              variant="primary"
-              paddingVertical={spacing.space16}
-              borderRadius={spacing.space4}
-              onPress={handleCreateAccount}
-              disabled={isCreatingAccount}
-              loading={isCreatingAccount}
-            />
-
-            <Button
-              title="Login"
-              variant="outline"
-              backgroundColor={palette.baseWhite}
-              paddingVertical={spacing.space16}
-              borderRadius={spacing.space4}
-              onPress={handleLogin}
-              loading={isLoggingIn}
-              disabled={isLoggingIn}
-            />
+          <View style={[customStyles.mt30,{paddingHorizontal:10,gap:20}]}>
+            <Button onPress={handleCreateAccount} disabled={isCreatingAccount} isLoading={isCreatingAccount} label="Create Account" ></Button>
+            <Button label="Login" isLoading={isLoggingIn} onPress={handleLogin} variant="outline"/>
+           
           </View>
         </ScrollView>
-      </SafeAreaView>
+      </View>
     </>
   );
 };

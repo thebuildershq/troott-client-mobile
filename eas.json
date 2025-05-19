@@ -11,12 +11,7 @@
     "preview": {
       "distribution": "internal",
       "android": {
-        "buildType": "apk",
-        "experimental": {
-          "newGradleProperties": {
-            "expo.newArch.enabled": "true"
-          }
-        }
+        "buildType": "apk"
       }
     },
     "production": {

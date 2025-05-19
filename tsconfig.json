@@ -4,9 +4,13 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "*": ["src/types/*"]
+      "*": ["src/types/*"],
+      "@/*": [
+        "./src/*"
+      ]
     }
   },
-  "include": ["src", "src/types", "app.config.tsx"]
+  "include": ["src", "src/types", "app.config.tsx","src/app","**/*.ts", "metro.config.ts"],
+  "moduleResolution":"nodenexr"
 }
 

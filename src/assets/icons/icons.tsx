@@ -1,5 +1,5 @@
-import email from "./tt/email-icon.svg";
-import passwordLock from "./tt/password-lock.svg";
+import email from "@/assets/icons/tt/email-icon.svg";
+import passwordLock from "@/assets/icons/password-lock.svg";
 
 
 export const ICONS = {

@@ -19,8 +19,8 @@ module.exports = function (api: ConfigAPI): BabelConfig {
                 allowUndefined: true,
                 verbose: false,
               }],
-            "react-native-reanimated/plugin",
             "react-native-iconify/plugin",
+            "react-native-reanimated/plugin",
         ],
     };
 };

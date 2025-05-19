@@ -7,8 +7,8 @@ import { useNavigation } from "@react-navigation/native";
 import { INavigation } from "../../utils/type.util";
 import TermsAndConditions from "../../designSystem/containers/Auth/TermsConditions";
 import { spacing } from "../../designSystem/theme/spacing";
-import Button from "../../designSystem/components/Buttons/Button";
-import OTPInput from "../../designSystem/components/Input/OTPInput";
+import Button from "../../components/Buttons/Button";
+import OTPInput from "../../components/Input/OTPInput";
 import ChangeData from "../../designSystem/containers/Auth/ChangeData";
 import ResendCode from "../../designSystem/containers/Auth/ResendCode";
 

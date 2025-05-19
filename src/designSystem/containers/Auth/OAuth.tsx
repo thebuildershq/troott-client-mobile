@@ -3,7 +3,7 @@ import React from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 import componentStyles from "../../../assets/styles/components";
 import customStyles from "../../../assets/styles/custom";
-import Button  from "../../components/Buttons/Button";
+import Button  from "../../../components/Buttons/Button";
 import { palette } from "../../theme/palette";
 import { spacing } from "../../theme/spacing";
 

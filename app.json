@@ -6,14 +6,20 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
+     "scheme": "troottmobile",
     "entryPoint": "./index.ts",
+    "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.dmlscript.troottclient",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -38,6 +44,10 @@
       "eas": {
         "projectId": "48464c89-4d39-460d-b9b3-f451321cce9c"
       }
-    }
+    },
+    "owner": "dmlscript",
+    "plugins": [
+      "expo-router"
+    ]
   }
 }

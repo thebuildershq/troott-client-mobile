@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import  ModalPortal  from "react-native-modals";
+// import  ModalPortal  from "react-native-modals";
 import Router from "./src/routes/Router";
 import { BACKGROUND_COLOR, FLEX } from "./src/utils/constant.util";
 import Error from "./src/screens/error";
@@ -20,7 +20,7 @@ export default function App() {
         <SafeAreaView style={[FLEX, BACKGROUND_COLOR]}>
           <StatusBar style="light" />
           <Router />
-          <ModalPortal />
+          {/* <ModalPortal /> */}
         </SafeAreaView>
       </GestureHandlerRootView>
     </ErrorBoundary>

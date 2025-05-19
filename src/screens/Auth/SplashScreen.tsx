@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import CustomImage from "../../designSystem/components/Images/Images";
+import CustomImage from "../../components/Images/Images";
 import customStyles from "../../assets/styles/custom";
 import { IMAGES } from "../../assets/images/images";
 import { useNavigation } from "@react-navigation/native";
