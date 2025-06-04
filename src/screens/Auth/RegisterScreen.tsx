@@ -1,7 +1,5 @@
-import { View, StyleSheet } from "react-native";
-import React, { useState } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
-import customStyles from "../../assets/styles/custom";
+import {  StyleSheet } from "react-native";
+import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { INavigation } from "../../utils/type.util";
 import TermsAndConditions from "../../designSystem/containers/Auth/TermsConditions";

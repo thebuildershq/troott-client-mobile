@@ -8,9 +8,9 @@ import { INavigation } from "../../utils/type.util";
 import TermsAndConditions from "../../designSystem/containers/Auth/TermsConditions";
 import { spacing } from "../../designSystem/theme/spacing";
 import Button from "../../components/Buttons/Button";
-import OTPInput from "../../components/Input/OTPInput";
 import ChangeData from "../../designSystem/containers/Auth/ChangeData";
 import ResendCode from "../../designSystem/containers/Auth/ResendCode";
+import OTPInput from "@/components/ui/otpinput";
 
 const VerificationScreen = () => {
   const navigation = useNavigation<INavigation>();
@@ -35,18 +35,7 @@ const VerificationScreen = () => {
 
             <View style={[customStyles.mt20]}></View>
 
-            <View>
-              <OTPInput
-                id="otp"
-                label="Enter OTP"
-                key={"otp"}
-                value={otp}
-                onChangeText={(val) => setOTP(val)}
-                onSubmit={() => handleSubmit()}
-                disabled={false}
-                borderRadius={spacing.space64}
-              />
-            </View>
+          
 
             <TermsAndConditions />
 

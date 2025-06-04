@@ -1,13 +1,11 @@
 import { PressableProps, ViewStyle, Pressable, TextStyle } from "react-native";
 import React, { useEffect } from "react";
 import { theme } from "@/constants/theme";
-import { padding } from "@/designSystem/theme/padding";
 import Animated, {
   interpolate,
   interpolateColor,
   useAnimatedStyle,
   useSharedValue,
-  withSpring,
   withTiming,
 } from "react-native-reanimated";
 import Text from "./text";
@@ -17,7 +15,7 @@ import { sizes } from "@/constants/sizes";
 interface ButtonProps extends PressableProps {
   label?: string;
   variant?: "primary" | "outline" | "secondary" | "ghost";
-  containeStyle?: ViewStyle;
+  containerStyle?: ViewStyle;
   isLoading?: boolean;
   children?: React.ReactNode;
 }
@@ -43,7 +41,7 @@ function VariantStyle(
       return {
         borderWidth: 1,
         borderColor: theme.colors.grey[100],
-        ...shared_styles
+        ...shared_styles,
       };
 
     case "secondary":
@@ -52,6 +50,7 @@ function VariantStyle(
     case "ghost":
       return {
         ...shared_styles,
+        height:'auto'
       };
     default:
       return {};
@@ -72,7 +71,7 @@ function textVariantStyle(
       };
     case "ghost":
       return {
-        color: theme.colors.grey[100]
+        color: theme.colors.grey[100],
       };
     case "secondary":
       return {};
@@ -84,25 +83,32 @@ const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 const Button = ({
   label,
-  containeStyle,
-  variant='primary',
+  containerStyle,
+  variant = "primary",
   isLoading,
   children,
   disabled,
   ...props
 }: ButtonProps) => {
   const enabledProgress = useSharedValue(0);
-  const pressProgress = useSharedValue(1)
+  const pressProgress = useSharedValue(1);
   const animatedStyles = useAnimatedStyle(() => ({
-    backgroundColor: variant=='primary' ? interpolateColor(enabledProgress.value,[0,1],[theme.colors.green[50],theme.colors.green[500]]):'',
-    opacity:interpolate(pressProgress.value,[0,1],[0.7,1])
+    backgroundColor:
+      variant == "primary"
+        ? interpolateColor(
+            enabledProgress.value,
+            [0, 1],
+            [theme.colors.green[50], theme.colors.green[500]]
+          )
+        : "",
+    opacity: interpolate(pressProgress.value, [0, 1], [0.7, 1]),
   }));
   useEffect(() => {
     if (disabled || isLoading) {
-      enabledProgress.value = withSpring(0);
+      enabledProgress.value = withTiming(0,{duration:200});
       return;
     }
-    enabledProgress.value = withSpring(1);
+    enabledProgress.value = withTiming(1,{duration:200});
   }, [disabled]);
   return (
     <AnimatedPressable
@@ -110,21 +116,23 @@ const Button = ({
       style={[
         {
           ...VariantStyle(variant),
-          ...containeStyle,
+          ...containerStyle,
         },
         animatedStyles,
       ]}
       {...props}
-      onPressIn={()=>{
-        pressProgress.value= withTiming(0)
+      onPressIn={() => {
+        pressProgress.value = withTiming(0);
       }}
-      onPressOut={()=>{
-        pressProgress.value=withTiming(1)
+      onPressOut={() => {
+        pressProgress.value = withTiming(1);
       }}
     >
-     {!isLoading && label && <Text textStyle={textVariantStyle(variant)}>{label}</Text>}
-     {!isLoading && children}
-     {isLoading && <Loader/>}
+      {!isLoading && label && (
+        <Text textStyle={textVariantStyle(variant)}>{label}</Text>
+      )}
+      {!isLoading && children}
+      {isLoading && <Loader />}
     </AnimatedPressable>
   );
 };

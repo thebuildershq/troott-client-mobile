@@ -19,9 +19,10 @@ const ScreenView = ({children,screenStyle,...props}:ScreenViewProps) => {
 
 const styles = StyleSheet.create({
   container:{
-    flex:1,
-    padding:theme.sizes.spacing.md,
-    gap:theme.sizes.spacing.lg
+    paddingHorizontal:theme.sizes.spacing.md,
+    gap:theme.sizes.spacing.lg,
+    height:theme.sizes.screen.height,
+
   }
 })
 export default ScreenView

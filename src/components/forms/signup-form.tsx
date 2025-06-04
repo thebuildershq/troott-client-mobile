@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {  Lock, Sms, User } from "iconsax-react-nativejs";
 import { theme } from "@/constants/theme";
 import Button from "../ui/button";
+import { router } from "expo-router";
 
 const SignUpform = () => {
   const form = useForm<SignupSchemaType>({
@@ -20,6 +21,7 @@ const SignUpform = () => {
   });
   function handleSubmit(data:SignupSchemaType){
     console.log(data)
+    router.push("/auth/verify-email")
   }
   return (
     <View style={styles.container}>

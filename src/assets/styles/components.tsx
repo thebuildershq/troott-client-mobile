@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { spacing } from "../../designSystem/theme/spacing";
 import { palette } from "../../designSystem/theme/palette";
 import { fonts } from "../../designSystem/theme/font";
-import { Divider } from "react-native-paper";
+
 
 const componentStyles = StyleSheet.create({
   //TextInput
@@ -89,7 +89,7 @@ const componentStyles = StyleSheet.create({
     
   },
   link: {
-    color: palette.green700,
+    color: "#659DF6",
     textDecorationLine: "underline",
     marginTop: 15,
   },

@@ -10,7 +10,7 @@
       ]
     }
   },
-  "include": ["src", "src/types", "app.config.tsx","src/app","**/*.ts", "metro.config.ts"],
+  "include": ["src", "src/types", "app.config.tsx","src/app","**/*.ts", "metro.config.js"],
   "moduleResolution":"nodenexr"
 }
 

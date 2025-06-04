@@ -73,11 +73,15 @@ const FormInput = <T extends FieldValues>({
           <AnimatedText textStyle={[animatedTextStyle]}>{label}</AnimatedText>
           <Input
             onFocus={handleFocusTextAnimation}
-            onBlur={handleBlurTextAnimation}
+            onBlur={()=>{
+              field.onBlur()
+              handleBlurTextAnimation()
+            }}
             onChangeText={field.onChange}
             placeholder={placeholder}
             secureTextEntry={name == "password"}
             leftIcon={leftIcon}
+            autoCapitalize="none"
             // isInvalid={!!fieldState.error}
           />
 
