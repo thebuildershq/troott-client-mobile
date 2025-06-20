@@ -8,18 +8,25 @@ import { theme } from '@/constants/theme'
 
 interface HeaderProps{
     title?:string,
-    variant?:"auth" | "home"
+    variant?:"auth" | "home" | "playlist"
+    rightElement?:React.ReactNode
+    leftElement?:React.ReactNode
+    centerElement?:React.ReactNode
 }
 
-const Header = ({title,variant}:HeaderProps) => {
+const Header = ({title,variant,rightElement,leftElement,centerElement}:HeaderProps) => {
+  if (variant === 'playlist') {
+    return (
+      <View style={styles.container}>
+        <Text weight='semibold' size='md'>
+          {title}
+        </Text>
+      </View>
+    )
+  }
   return (
     <View style={styles.container}>
-      <Button variant='ghost' onPress={()=>{router.back()}} style={styles.arrow}>
-        <ArrowLeft2 color={theme.colors.grey[400]}/>
-      </Button>
-        <Text weight='semibold' size='md'>
-           {title}
-        </Text>
+
     </View>
   )
 }

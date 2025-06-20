@@ -11,7 +11,7 @@ const RecentlyAdded = () => {
     <View style={styles.container}>
       <Text size="lg" color="#fff" weight="semibold">Recently Added</Text>
       <FlashList
-        data={TransformArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])}
+        data={TransformArray([1, 2, 3, 4, 5, 6, 7, 8],2)}
         keyExtractor={(item, index) => index + "group"}
         horizontal
         snapToInterval={theme.sizes.screen.width * 0.8}

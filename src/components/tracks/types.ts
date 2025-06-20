@@ -4,9 +4,10 @@ export interface TrackCardProps{
     title : string
     variant:'small' | 'large'
     preacher:string
-    duration:string
+    duration:string | number
     image:string,
     cardStyle?:ViewStyle
+    track_url?:string
 }
 
 export interface PlayListCardProps{

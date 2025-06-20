@@ -82,7 +82,7 @@ const Input = React.forwardRef<React.ElementRef<typeof TextInput>, InputProps>(
 
     }
     return (
-      <AnimatedPressable style={[styles.container, animatedStyles]}>
+      <AnimatedPressable style={[{...styles.container,...containerstyle}, animatedStyles]}>
         {leftIcon && leftIcon}
         <TextInput
           autoCorrect={false}

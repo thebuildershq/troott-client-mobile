@@ -1,6 +1,5 @@
 import { Image, Pressable, ScrollView, StyleSheet, View } from "react-native";
-import React, { useEffect } from "react";
-import ScreenView from "@/components/ui/screenview";
+import React from "react";
 import Text from "@/components/ui/text";
 import { TrackDetailsHeader } from "@/components/track-detail-screen";
 import { theme } from "@/constants/theme";
@@ -16,7 +15,7 @@ import {
 } from "iconsax-react-nativejs";
 import { SolidIcons } from "@/assets/icons";
 import Slider from "@react-native-community/slider";
-import { addTracks, setupPlayer } from "@/services/player/setup-player";
+
 import TrackPlayer, {
   useTrackPlayerEvents,
   Event,
@@ -33,50 +32,45 @@ import {
   skipToNext,
   skipToPrevious,
 } from "@/services/player/controls";
+import { useTrackStore } from "@/store/track";
+import { TrackCardProps } from "./types";
+import Animated, { SlideInDown, SlideInUp } from "react-native-reanimated";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-const TrackDetails = () => {
-  useEffect(() => {
-    async function setup() {
-      let isSetup = await setupPlayer();
-      const queue = await TrackPlayer.getQueue();
-      if (isSetup && queue.length >= 0) {
-        await addTracks();
-        TrackPlayer.play();
-        console.log(await TrackPlayer.getPlaybackState(), "here");
-      }
-    }
-
-    setup();
-    return () => {
-      TrackPlayer.stop();
-    };
-  }, []);
-
-    const [track, setTrack] = React.useState<Track | null>(null);
-
+const FullPlayerTrackDetails = () => {
+  const { showFullPlayer, currentTrack } = useTrackStore((state) => state);
+    const {top} = useSafeAreaInsets()
+  if (!showFullPlayer) {
+    return null;
+  }
+  //   const [track, setTrack] = React.useState<Track | null>(null);
   const events = [Event.PlaybackActiveTrackChanged, Event.PlaybackState];
 
-  useTrackPlayerEvents(events, async (event) => {
-    if (event.type === Event.PlaybackState) {
-      const state = await getPlaybackState();
-      if (state === State.Playing) {
-        const currentTrack = await getCurrentTrack();
-        if (currentTrack) {
-          console.log(currentTrack, "current track");
-          setTrack(currentTrack);
-        }
-      }
-    }
-    if (event.type === Event.PlaybackActiveTrackChanged) {
-      const track = await getCurrentTrack();
-      if (track) {
-        setTrack(track);
-      }
-    }
-  });
-  
+  //   useTrackPlayerEvents(events, async (event) => {
+  //     if (event.type === Event.PlaybackState) {
+  //       const state = await getPlaybackState();
+  //       if (state === State.Playing) {
+  //         const currentTrack = await getCurrentTrack();
+  //         if (currentTrack) {
+  //           console.log(currentTrack, "current track");
+  //           setTrack(currentTrack);
+  //         }
+  //       }
+  //     }
+  //     if (event.type === Event.PlaybackActiveTrackChanged) {
+  //       const track = await getCurrentTrack();
+  //       if (track) {
+  //         setTrack(track);
+  //       }
+  //     }
+  //   });
+
   return (
-    <ScreenView>
+    <Animated.View
+      entering={SlideInDown.duration(500)}
+    //   exiting={SlideInUp.duration(500)}
+      style={[styles.container,{paddingTop: top}]}
+    >
       <TrackDetailsHeader />
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -84,27 +78,30 @@ const TrackDetails = () => {
       >
         <View>
           <Image
-            source={track?.artwork || require("@/assets/images/cover.jpg")}
+            source={currentTrack?.image || require("@/assets/images/cover.jpg")}
             style={styles.image}
           />
         </View>
-     {  track && <TrackActionsController track={track}/>}
+        <TrackActionsController track={currentTrack} />
         <TrackProgress />
         <SermonDetails />
       </ScrollView>
-    </ScreenView>
+    </Animated.View>
   );
 };
 
-function TrackActionsController({track}: { track?: Track }) {
-
+function TrackActionsController({
+  track,
+}: {
+  track: Partial<TrackCardProps> | null;
+}) {
   return (
     <View style={styles.actionContainer}>
       <View style={{ gap: theme.sizes.spacing.sm, width: "40%" }}>
         <Text color="#fff" size="md" weight="semibold" numberOfLines={1}>
           {track?.title || "Track Title"}
         </Text>
-        <Text>{track?.artist}</Text>
+        <Text>{track?.preacher}</Text>
       </View>
       <View style={styles.iconsContainer}>
         <Pressable>
@@ -268,10 +265,20 @@ function SermonDetails() {
   );
 }
 
-export default TrackDetails;
+export default FullPlayerTrackDetails;
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    top: 0,
+    zIndex: 1000,
+    backgroundColor: "#000",
+    padding: theme.sizes.spacing.md,
+    gap: theme.sizes.spacing.xl,
+  },
   image: {
     height: theme.sizes.screen.height * 0.4,
     borderRadius: theme.sizes.radius.md,

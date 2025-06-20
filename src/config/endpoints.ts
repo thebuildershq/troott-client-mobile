@@ -1,0 +1,5 @@
+const endpoints = {
+    track:{
+        gettrack:'/'
+    }
+}

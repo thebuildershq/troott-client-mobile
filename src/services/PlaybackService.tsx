@@ -67,7 +67,6 @@ export async function TrackPlayerService() {
   });
 
   TrackPlayer.addEventListener(Event.PlaybackActiveTrackChanged, (event) => {
-    console.log('Event.PlaybackActiveTrackChanged', event);
   });
 
   TrackPlayer.addEventListener(Event.PlaybackProgressUpdated, (event) => {
@@ -79,7 +78,7 @@ export async function TrackPlayerService() {
   });
 
   TrackPlayer.addEventListener(Event.PlaybackState, (event) => {
-    console.log('Event.PlaybackState', event);
+
   });
 
   // Metadata Events

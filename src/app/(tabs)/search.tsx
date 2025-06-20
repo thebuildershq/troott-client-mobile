@@ -13,7 +13,7 @@ const Search = () => {
     <ScreenView>
       {/* header section */}
       <Header />
-      <Input leftIcon={<SearchNormal size={20}/>} placeholder="Seach sermons, pastors, topics..."/>
+      <Input leftIcon={<SearchNormal size={20} color="#fff"/>} placeholder="Seach sermons, pastors, topics..."/>
       <RecentlyAdded/>
     </ScreenView>
   );
@@ -30,7 +30,7 @@ function Header() {
             borderRadius:theme.sizes.radius.full
           }}
         >
-          <ProfileCircle />
+          <ProfileCircle color="#fff" />
         </View>
         <Text size="lg" color="#fff" weight="semibold">
           Search

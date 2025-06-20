@@ -10,18 +10,21 @@ import Button from "@/components/ui/button";
 import { FlashList } from "@shopify/flash-list";
 import { TransformArray } from "@/utils/transform-array";
 import { MoreFromPreacher, TrendingPlaylist } from "@/components/home";
+import { Tracks } from "@/mock";
 
 const Home = () => {
   return (
     <ScreenView>
-       
       {/* header section */}
       <ScrollView
         style={styles.scrollContainer}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ gap: theme.sizes.spacing.xl,  paddingBottom:100 }}
+        contentContainerStyle={{
+          gap: theme.sizes.spacing.xl,
+          paddingBottom: 100,
+        }}
       >
-       <Header />
+        <Header />
         {/* continue listening */}
         <ContinueListening />
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
@@ -29,9 +32,10 @@ const Home = () => {
           <SavedTracks />
         </View>
         <SermonsForYou />
-        <MoreFromPreacher/>
-        <TrendingPlaylist/>
+        <MoreFromPreacher />
+        <TrendingPlaylist />
       </ScrollView>
+
     </ScreenView>
   );
 };
@@ -66,7 +70,7 @@ function ContinueListening() {
 
 function SermonsForYou() {
   return (
-    <View style={{gap:theme.sizes.spacing.md}}>
+    <View style={{ gap: theme.sizes.spacing.md }}>
       <View
         style={{
           flexDirection: "row",
@@ -87,22 +91,26 @@ function SermonsForYou() {
         data={TransformArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])}
         keyExtractor={(item, index) => index + "group"}
         horizontal
-        snapToInterval={theme.sizes.screen.width * .8}
+        snapToInterval={theme.sizes.screen.width * 0.8}
         showsHorizontalScrollIndicator={false}
         decelerationRate={-1}
         estimatedItemSize={290}
         renderItem={({ item, index }) => (
-          <View style={{gap:10,marginRight:10,}}>
-            {item.map((_, index) => (
-              <TrackCard
-                key={index+'track'}
-                title="Beauty for ashes"
-                image={require("@/assets/images/cover.jpg")}
-                duration="23:12"
-                preacher="Apostle Joshua Selman"
-                variant="small"
-              />
-            ))}
+          <View style={{ gap: 10, marginRight: 10 }}>
+            {item.map((_, index) => {
+              const track = Tracks[index % 3];
+              return (
+                <TrackCard
+                  key={index + "track"}
+                  title={track.title ?? ""}
+                  preacher={track.preacher ?? ""}
+                  duration={track.duration ?? ""}
+                  image={track.image ?? ""}
+                  track_url={track.track_url}
+                  variant="small"
+                />
+              );
+            })}
           </View>
         )}
       />
@@ -117,7 +125,7 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     flex: 2,
-    height:'100%',
+    height: "100%",
   },
   seeMore: {
     borderRadius: theme.sizes.radius.full,

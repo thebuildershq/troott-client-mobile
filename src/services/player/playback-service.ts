@@ -71,7 +71,7 @@ export async function TrackPlayerService() {
   });
 
   TrackPlayer.addEventListener(Event.PlaybackProgressUpdated, (event) => {
-    console.log('Event.PlaybackProgressUpdated', event);
+    // console.log('Event.PlaybackProgressUpdated', event);
   });
 
   TrackPlayer.addEventListener(Event.PlaybackPlayWhenReadyChanged, (event) => {
@@ -88,7 +88,7 @@ export async function TrackPlayerService() {
   });
 
   TrackPlayer.addEventListener(Event.MetadataTimedReceived, (event) => {
-    console.log('Event.MetadataTimedReceived', event);
+   
   });
 
   TrackPlayer.addEventListener(Event.MetadataCommonReceived, (event) => {
@@ -97,7 +97,7 @@ export async function TrackPlayerService() {
 
   // Custom: Update Now Playing Info when Metadata Received
   TrackPlayer.addEventListener(Event.MetadataCommonReceived, async (event) => {
-    console.log('Event.MetadataCommonReceived', event);
+
   
     const activeTrack = await TrackPlayer.getActiveTrack();
     if (activeTrack) {
